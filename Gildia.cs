@@ -50,6 +50,7 @@ namespace ConsoleApp1
                 if ((zarobioneZloto >= 500) && (postep2 == 0))
                 {
                     b.inteligencja = b.inteligencja + 2;
+                    b.zrecznosc = b.zrecznosc + 1;
                     postep2 = 1;
                     b.bohaterStatus = "2";
                 }

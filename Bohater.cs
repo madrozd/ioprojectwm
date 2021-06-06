@@ -6,8 +6,8 @@ namespace ConsoleApp1
 {
     class Bohater : Arkusz
     {
-        public  int PD;
-        public  int bierwiono;
+        public int PD;
+        public int bierwiono;
         public static int zloto;
         public static int punktacja;
         public static int ruda;
@@ -15,9 +15,9 @@ namespace ConsoleApp1
         public static int klejnot;
         public string bohaterStatus;
 
-        public Bohater(string imie)
+        public Bohater()
         {
-            nazwa = imie;         
+            nazwa = "";
             sila = 1;
             zrecznosc = 1;
             PZ = 10;
@@ -34,11 +34,11 @@ namespace ConsoleApp1
             bohaterStatus = "Nieznany";
         }
 
-       public void wyswietlStatystyki()
+        public void wyswietlStatystyki()
         {
-            Console.WriteLine("Siła: {0}\nZręczność: {1}\nWytrzymałość: {2}\nInteligencja: {3}\nCharyzma: {4}\nPunkty Życia: {5}", sila, zrecznosc, wytrzymalosc, inteligencja, charyzma, PZ); ;
+            Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6}",nazwa, sila, zrecznosc, wytrzymalosc, inteligencja, charyzma, PZ); ;
         }
-       public void Awans()
+        public void Awans()
         {
             int silaPrzed = sila;
             int zrecznoscPrzed = zrecznosc;
@@ -84,10 +84,10 @@ namespace ConsoleApp1
                 Console.WriteLine("1. Zaakceptuj wybór statystyk");
                 Console.WriteLine("2. Zrezygnuj");
                 string Potwierdzenie = " ";
-                while (!(Potwierdzenie == "1") && !(Potwierdzenie == "2")) 
+                while (!(Potwierdzenie == "1") && !(Potwierdzenie == "2"))
                 {
                     Potwierdzenie = Console.ReadLine();
-                    
+
                     switch (Potwierdzenie)
                     {
                         case "1":
@@ -103,13 +103,13 @@ namespace ConsoleApp1
                             inteligencja = inteligencjaPrzed;
                             charyzma = charyzmaPrzed;
                             break;
-                            
+
                         default:
                             Console.WriteLine("Wybierz poprawnie");
                             break;
                     }
-                    
-                } 
+
+                }
 
             }
             else
@@ -153,7 +153,7 @@ namespace ConsoleApp1
                 switch (wyborTworz)
                 {
                     case "1":
-                        Przedmiot magicznymiecz = new Przedmiot("Magiczny miecz", 10,1,5,3,99,100);
+                        Przedmiot magicznymiecz = new Przedmiot("Magiczny miecz", 10, 1, 5, 3, 99, 100);
                         sila = sila + magicznymiecz.sila;
                         zrecznosc = zrecznosc + magicznymiecz.zrecznosc;
                         wytrzymalosc = wytrzymalosc + magicznymiecz.wytrzymalosc;
@@ -171,6 +171,13 @@ namespace ConsoleApp1
                 }
             }
             Console.Clear();
+        }
+        public static void nazwijPostac(Bohater b)
+        {
+            Console.WriteLine("Nazwij swoją postać.");
+            string wybierzImie = Console.ReadLine();
+            b.nazwa = wybierzImie;
+            Console.WriteLine("Witaj {0}", b.nazwa);
         }
 
 
