@@ -14,7 +14,11 @@ namespace ConsoleApp1
             switch (wyborAkcji)
             {
                 case "1":
-                    Console.WriteLine("Prace techniczne");
+                    Przygody.Zdarzenia();
+                    if (Przygody.los < 15)
+                    {
+                        Przygody.los++;
+                    }
                     break;
                 case "2":
                     b.wyswietlStatystyki();

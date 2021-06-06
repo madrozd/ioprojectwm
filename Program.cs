@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
 namespace ConsoleApp1
 {
 
@@ -11,10 +13,16 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
+            Przygody.losujPrzygody();
             Bohater bohater = new Bohater();
             Przygody.Poczatek(bohater);
             Console.WriteLine(bohater.nazwa);
-            Akcja.Menu(bohater);
+            while (true)
+            {
+                Akcja.Menu(bohater);
+            } 
+
+           
 
         }
     }

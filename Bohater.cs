@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ConsoleApp1
 {
@@ -17,7 +18,7 @@ namespace ConsoleApp1
 
         public Bohater()
         {
-            nazwa = "";
+            nazwa = "Bezimienny";
             sila = 1;
             zrecznosc = 1;
             PZ = 10;
@@ -175,9 +176,20 @@ namespace ConsoleApp1
         public static void nazwijPostac(Bohater b)
         {
             Console.WriteLine("Nazwij swoją postać.");
-            string wybierzImie = Console.ReadLine();
-            b.nazwa = wybierzImie;
-            Console.WriteLine("Witaj {0}", b.nazwa);
+            string wybierzImie = "";
+            while (!(Regex.IsMatch(wybierzImie, @"^[a-zA-Z]+$")))
+            {
+                wybierzImie = Console.ReadLine();
+                if ((Regex.IsMatch(wybierzImie, @"^[a-zA-Z]+$")) == true)
+                {
+                    b.nazwa = wybierzImie;
+                }
+                else
+                {
+                    Console.WriteLine("Niepoprawne znaki");
+                }
+            }
+                    Console.WriteLine("Witaj {0}", b.nazwa);
         }
 
 
