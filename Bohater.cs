@@ -13,6 +13,7 @@ namespace ConsoleApp1
         public static int ruda;
         public static int skora;
         public static int klejnot;
+        public string bohaterStatus;
 
         public Bohater(string imie)
         {
@@ -30,6 +31,7 @@ namespace ConsoleApp1
             ruda = 0;
             skora = 0;
             klejnot = 0;
+            bohaterStatus = "Nieznany";
         }
 
        public void wyswietlStatystyki()

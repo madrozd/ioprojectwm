@@ -6,334 +6,63 @@ namespace ConsoleApp1
 {
     class Akcja
     {
-        Bohater bohater = new Bohater("Bezimienny");
-        public static int Odpocznij(int bierwiono, int wytrzymalosc)
+        public static void Menu(Bohater b)
+        {
+            Console.WriteLine("1.Dalej\n2.Wyświetl statystyki\n3.Odpocznij\n4.Handel\n5.Gildia kupców\n6.Gildia Wojowników\n7.Zakon mnichów\n8.Świątynia\n9.Wyświetl punktację");
+            string wyborAkcji = "";
+            wyborAkcji = Console.ReadLine();
+            switch (wyborAkcji)
+            {
+                case "1":
+                    Console.WriteLine("Prace techniczne");
+                    break;
+                case "2":
+                    b.wyswietlStatystyki();
+                    break;
+                case "3":
+                    Akcja.Odpocznij(b);
+                    break;
+                case "4":
+                    Handel.wyborHandel();
+                    break;
+                case "5":
+                    Gildia.gildiaKupcow(b);
+                    break;
+                case "6":
+                    Gildia.gildiaWojownikow(b);
+                    break;
+                case "7":
+                    Gildia.gildiaMnichow(b);
+                    break;
+                case "8":
+                    Swiatynia.wyborSwiatynia(b);
+                    break;
+                case "9":
+                    Akcja.wyswietlPunktacje();
+                    break;
+                default:
+                    Console.WriteLine("Niepoprawny znak");
+                    break;
+            }
+        }
+        public static void Odpocznij(Bohater b)
         {
             
-            if (bierwiono >= 1)
+            if (b.bierwiono >= 1)
             {
                Console.WriteLine("Odpoczywasz");
-               int maxPZ = wytrzymalosc * 10;
-               return maxPZ; 
+               b.PZ = b.wytrzymalosc * 10;
+                
             }
             else
             {
                 Console.WriteLine("Nie masz bierwiona");
-                return 0;
             }
         }
-        public static void wyswietlPunktacje(int punktacja)
+        public static void wyswietlPunktacje()
         {
-            Console.WriteLine(punktacja);
-        }
-        public static void Sprzedaj()
-        {
-
-            int ilosc2;
-            int zloto = 0;
-            string wyborSprzedaj = " ";
-            while (wyborSprzedaj != "4")
-            {
-                Console.WriteLine("1. Sprzedaj rudę\n2. Sprzedaj skórę\n3. Sprzedaj klejnoty\n4. Wyjście");
-                wyborSprzedaj = Console.ReadLine();
-                string ilosc = " ";
-                string potwierdz = " ";
-                switch (wyborSprzedaj)
-                {
-                    case "1":
-                        Console.WriteLine("Posiadasz {0} rudy", Bohater.ruda);
-                        Console.WriteLine("Ile chcesz sprzedać? Jedna sztuka rudy kosztuje 10 złota");
-                        ilosc = Console.ReadLine();
-                        if (int.TryParse(ilosc, out ilosc2))
-                        {
-
-                            if (ilosc2 >= 0 && ilosc2 <= Bohater.ruda)
-                            {
-                                Console.WriteLine("Na pewno chcesz sprzedać {0} rudy?", ilosc2);
-                                Console.WriteLine("1.Tak\n2.Nie");
-
-                                while (!(potwierdz == "1") && !(potwierdz == "2"))
-                                {
-                                    potwierdz = Console.ReadLine();
-                                    switch (potwierdz)
-                                    {
-                                        case "1":
-                                            zloto = ilosc2 * 10;
-                                            Bohater.zloto = Bohater.zloto + zloto;
-                                            Bohater.ruda = Bohater.ruda - ilosc2;
-                                            Console.WriteLine("Sprzedałeś {0} rudy za {1} złota.", ilosc2, zloto);
-                                            continue;
-                                        case "2":
-                                            Console.WriteLine("Zrezygnowałeś");
-                                            continue;
-                                        default:
-                                            Console.WriteLine("Niepoprawny znak");
-                                            continue;
-                                    }
-                                }
-                            }
-
-                            else
-                            {
-                                Console.WriteLine("Nie możesz sprzedać minusowej oraz większej niż posiadana ilości rudy");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Niepoprawna wartość");
-                        }
-                      continue;
-                    case "2":
-                        Console.WriteLine("Posiadasz {0} skóry", Bohater.skora);
-                        Console.WriteLine("Ile chcesz sprzedać? Jedna sztuka skóry kosztuje 20 złota");
-                        ilosc = Console.ReadLine();
-                        if (int.TryParse(ilosc, out ilosc2))
-                        {
-
-                            if (ilosc2 >= 0 && ilosc2 <= Bohater.skora)
-                            {
-                                Console.WriteLine("Na pewno chcesz sprzedać {0} skór?", ilosc2);
-                                Console.WriteLine("1.Tak\n2.Nie");
-
-                                while (!(potwierdz == "1") && !(potwierdz == "2"))
-                                {
-                                    potwierdz = Console.ReadLine();
-                                    switch (potwierdz)
-                                    {
-                                        case "1":
-                                            zloto = ilosc2 * 20;
-                                            Bohater.zloto = Bohater.zloto + zloto;
-                                            Bohater.skora = Bohater.skora - ilosc2;
-                                            Console.WriteLine("Sprzedałeś {0} skór za {1} złota.", ilosc2, zloto);
-                                            continue;
-                                        case "2":
-                                            Console.WriteLine("Zrezygnowałeś");
-                                            continue;
-                                        default:
-                                            Console.WriteLine("Niepoprawny znak");
-                                            continue;
-                                    }
-                                }
-                            }
-
-                            else
-                            {
-                                Console.WriteLine("Nie możesz sprzedać minusowej oraz większej niż posiadana ilości skóry");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Niepoprawna wartość");
-                        }
-                        continue;
-                    case "3":
-                        Console.WriteLine("Posiadasz {0} klejnotów", Bohater.klejnot);
-                        Console.WriteLine("Ile chcesz sprzedać? Jeden klejnot kosztuje 50 złota");
-                        ilosc = Console.ReadLine();
-                        if (int.TryParse(ilosc, out ilosc2))
-                        {
-
-                            if (ilosc2 >= 0 && ilosc2 <= Bohater.klejnot)
-                            {
-                                Console.WriteLine("Na pewno chcesz sprzedać {0} klejnotów?", ilosc2);
-                                Console.WriteLine("1.Tak\n2.Nie");
-
-                                while (!(potwierdz == "1") && !(potwierdz == "2"))
-                                {
-                                    potwierdz = Console.ReadLine();
-                                    switch (potwierdz)
-                                    {
-                                        case "1":
-                                            zloto = ilosc2 * 50;
-                                            Bohater.zloto = Bohater.zloto + zloto;
-                                            Bohater.klejnot = Bohater.klejnot - ilosc2;
-                                            Console.WriteLine("Sprzedałeś {0} klejnotów za {1} złota.", ilosc2, zloto);
-                                            continue;
-                                        case "2":
-                                            Console.WriteLine("Zrezygnowałeś");
-                                            continue;
-                                        default:
-                                            Console.WriteLine("Niepoprawny znak");
-                                            continue;
-                                    }
-                                }
-                            }
-
-                            else
-                            {
-                                Console.WriteLine("Nie możesz sprzedać minusowej oraz większej niż posiadasz ilości klejnotów");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Niepoprawna wartość");
-                        }
-                        continue;
-                    case "4":
-                        Console.WriteLine("Wyjście");
-                        continue;
-                    default:
-                        Console.Write("Wybierz poprawną opcję");
-                        continue;
-
-                }
-
-            }
-            Console.Clear();
-            
-        }
-        public static void Kup()
-        {
-
-            int ilosc2;
-            int zloto = 0;
-            string wyborKup = " ";
-            while (wyborKup != "4")
-            {
-                Console.WriteLine("1. Kup rudę\n2. Kup skórę\n3. Kup klejnoty\n4. Wyjście");
-                wyborKup = Console.ReadLine();
-                string ilosc = " ";
-                string potwierdz = " ";
-                switch (wyborKup)
-                {
-                    case "1":
-                        Console.WriteLine("Posiadasz {0} rudy", Bohater.ruda);
-                        Console.WriteLine("Ile chcesz kupić? Jedna sztuka rudy kosztuje 20 złota");
-                        ilosc = Console.ReadLine();
-                        if (int.TryParse(ilosc, out ilosc2))
-                        {
-
-                            if (ilosc2 >= 0 && Bohater.zloto >= ilosc2 * 20)
-                            {
-                                Console.WriteLine("Na pewno chcesz kupić {0} rudy za {1}?", ilosc2, ilosc2*20);
-                                Console.WriteLine("1.Tak\n2.Nie");
-
-                                while (!(potwierdz == "1") && !(potwierdz == "2"))
-                                {
-                                    potwierdz = Console.ReadLine();
-                                    switch (potwierdz)
-                                    {
-                                        case "1":
-                                            zloto = ilosc2 * 20;
-                                            Bohater.zloto = Bohater.zloto - zloto;
-                                            Bohater.ruda = Bohater.ruda + ilosc2;
-                                            Console.WriteLine("Kupiłeś {0} rudy za {1} złota.", ilosc2, zloto);
-                                            continue;
-                                        case "2":
-                                            Console.WriteLine("Zrezygnowałeś");
-                                            continue;
-                                        default:
-                                            Console.WriteLine("Niepoprawny znak");
-                                            continue;
-                                    }
-                                }
-                            }
-
-                            else
-                            {
-                                Console.WriteLine("Nie możesz kupić minusowej ilości rudy lub cię nie stać.");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Niepoprawna wartość");
-                        }
-                        continue;
-                    case "2":
-                        Console.WriteLine("Posiadasz {0} skór", Bohater.skora);
-                        Console.WriteLine("Ile chcesz kupić? Jedna sztuka skóry kosztuje 40 złota");
-                        ilosc = Console.ReadLine();
-                        if (int.TryParse(ilosc, out ilosc2))
-                        {
-
-                            if (ilosc2 >= 0 && Bohater.zloto >= ilosc2 * 40)
-                            {
-                                Console.WriteLine("Na pewno chcesz kupić {0} skór za {1}?", ilosc2, ilosc2 * 40);
-                                Console.WriteLine("1.Tak\n2.Nie");
-
-                                while (!(potwierdz == "1") && !(potwierdz == "2"))
-                                {
-                                    potwierdz = Console.ReadLine();
-                                    switch (potwierdz)
-                                    {
-                                        case "1":
-                                            zloto = ilosc2 * 20;
-                                            Bohater.zloto = Bohater.zloto - zloto;
-                                            Bohater.skora = Bohater.skora + ilosc2;
-                                            Console.WriteLine("Kupiłeś {0} skór za {1} złota.", ilosc2, zloto);
-                                            continue;
-                                        case "2":
-                                            Console.WriteLine("Zrezygnowałeś");
-                                            continue;
-                                        default:
-                                            Console.WriteLine("Niepoprawny znak");
-                                            continue;
-                                    }
-                                }
-                            }
-
-                            else
-                            {
-                                Console.WriteLine("Nie możesz kupić minusowej ilości skór lub cię nie stać.");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Niepoprawna wartość");
-                        }
-                        continue;
-                    case "3":
-                        Console.WriteLine("Posiadasz {0} klejnotów", Bohater.klejnot);
-                        Console.WriteLine("Ile chcesz kupić? Jedna sztuka klejnotów kosztuje 100 złota");
-                        ilosc = Console.ReadLine();
-                        if (int.TryParse(ilosc, out ilosc2))
-                        {
-
-                            if (ilosc2 >= 0 && Bohater.zloto >= ilosc2 * 100)
-                            {
-                                Console.WriteLine("Na pewno chcesz kupić {0} klejnotów za {1}?", ilosc2, ilosc2 * 100);
-                                Console.WriteLine("1.Tak\n2.Nie");
-
-                                while (!(potwierdz == "1") && !(potwierdz == "2"))
-                                {
-                                    potwierdz = Console.ReadLine();
-                                    switch (potwierdz)
-                                    {
-                                        case "1":
-                                            zloto = ilosc2 * 100;
-                                            Bohater.zloto = Bohater.zloto - zloto;
-                                            Bohater.klejnot = Bohater.klejnot + ilosc2;
-                                            Console.WriteLine("Kupiłeś {0} rudy za {1} złota.", ilosc2, zloto);
-                                            continue;
-                                        case "2":
-                                            Console.WriteLine("Zrezygnowałeś");
-                                            continue;
-                                        default:
-                                            Console.WriteLine("Niepoprawny znak");
-                                            continue;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("Nie możesz kupić minusowej ilości klejnotów lub cię nie stać.");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Niepoprawna wartość");
-                        }
-                        continue;
-                }
-            }
-            Console.Clear();
+            Console.WriteLine("Twoja punktacja: {0}",Bohater.punktacja);
         }
     }
-        //public static void zmienStatystyki(ref Bohater b)
-        //{
-        //    b = new Bohater("Bezimienny");
-        //     b.sila = 3;
-        //}
 
-    
 }

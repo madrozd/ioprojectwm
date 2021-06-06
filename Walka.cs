@@ -6,7 +6,7 @@ namespace ConsoleApp1
 {
     class Walka
     {
-        public static void Pojedynek(ref Bohater b, Przeciwnik p)
+        public static void Pojedynek(Bohater b, Przeciwnik p)
         {
 
             Console.WriteLine("Rozpoczynasz walkę z {0}", p.nazwa);
@@ -20,21 +20,22 @@ namespace ConsoleApp1
                 switch (wybor)
                 {
                     case "1":
-                        Walka.Atak(ref b, p);
+                        Walka.Atak(b, p);
                         continue;
                     case "2":
-                        Walka.Obrona(ref b, p);
+                        Walka.Obrona(b, p);
                         continue;
                     default:
                         Console.WriteLine("Niepoprawny znak");
                         continue;
                 }
             }
+            Gildia.pokonaniPrzeciwnicy++;
             p.PZ = p.maxPZ;
 
 
         }
-        public static void Atak(ref Bohater b, Przeciwnik p)
+        public static void Atak( Bohater b, Przeciwnik p)
         {
             int obrazenia = 0;
             int trafienieSprawdz = 0;
@@ -43,9 +44,9 @@ namespace ConsoleApp1
             Random krytLosowanie = new Random();
             trafienieSprawdz = (b.zrecznosc / 3) + (szansaTrafienie.Next(0, 6));
             Console.WriteLine("Zdecydowałeś się na atak\n{0} Atakuje!", b.nazwa);
-            if (trafienieSprawdz > 4)
+            if (trafienieSprawdz > 3)
             {
-                krytSprawdz = (b.zrecznosc / 2) + (krytLosowanie.Next(0, 11));
+                krytSprawdz = (b.zrecznosc / 2) + (krytLosowanie.Next(0, 8));
                 if (krytSprawdz >= 8)
                 {
                     obrazenia = b.sila * 3;
@@ -76,9 +77,9 @@ namespace ConsoleApp1
                 krytSprawdz = 0;
                 trafienieSprawdz = (p.zrecznosc / 3) + (szansaTrafienie.Next(0, 6));
                 Console.WriteLine("{0} odpowiada atakiem!", p.nazwa);
-                if (trafienieSprawdz > 4)
+                if (trafienieSprawdz > 3)
                 {
-                    krytSprawdz = (p.zrecznosc / 2) + (krytLosowanie.Next(0, 11));
+                    krytSprawdz = (p.zrecznosc / 2) + (krytLosowanie.Next(0, 8));
                     if (krytSprawdz >= 8)
                     {
                         obrazenia = p.sila * 3;
@@ -107,7 +108,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Przeciwnik pokonany");
             }
         }
-        public static void Obrona(ref Bohater b, Przeciwnik p)
+        public static void Obrona(Bohater b, Przeciwnik p)
         {
             int maxPZ = b.wytrzymalosc * 10;
             int licznik = 0;
@@ -131,7 +132,7 @@ namespace ConsoleApp1
             Console.WriteLine("{0} atakuje!", p.nazwa);
             if (trafienieSprawdz > 4)
             {
-                krytSprawdz = (p.zrecznosc / 2) + (krytLosowanie.Next(0, 11));
+                krytSprawdz = (p.zrecznosc / 2) + (krytLosowanie.Next(0, 8));
                 if (krytSprawdz >= 8)
                 {
                     obrazenia = p.sila * 2;
