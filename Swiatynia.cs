@@ -94,7 +94,7 @@ namespace ConsoleApp1
         public static void Ofiara(Bohater b)
         {
             Console.WriteLine("Zdecydowałeś się złożyć ofiarę");
-            if(Bohater.zloto >= 100)
+            if(b.zloto >= 100)
             {
                 Console.WriteLine("Złożono ofiarę w postaci 100 sztuk złota");
                 modlitwaIlosc = 0;

@@ -43,7 +43,7 @@ namespace ConsoleApp1
                 if ((zarobioneZloto >= 300) && (postep1 == 0))
                 {
                     Console.WriteLine("Jako nagrodę za twoje kupieckie osiągnięcia damy ci ...");
-                    Bohater.zloto = Bohater.zloto + 100;
+                    b.zloto = b.zloto + 100;
                     postep1 = 1;
                     b.bohaterStatus = "1";
                 }
@@ -56,9 +56,9 @@ namespace ConsoleApp1
                 }
                 if ((zarobioneZloto >= 1000) && (postep3 == 0))
                 {
-                    Bohater.ruda = Bohater.ruda + 20;
-                    Bohater.skora = Bohater.skora + 20;
-                    Bohater.klejnot = Bohater.klejnot + 10;
+                    b.ruda = b.ruda + 20;
+                    b.skora = b.skora + 20;
+                    b.klejnot = b.klejnot + 10;
                     postep3 = 1;
                     b.bohaterStatus = "3";
                 }
@@ -76,7 +76,7 @@ namespace ConsoleApp1
                 if ((pokonaniPrzeciwnicy >= 1) && (postep1 == 0))
                 {
                     Console.WriteLine("Jako nagrodę za twoją waleczność ...");
-                    Bohater.zloto = Bohater.zloto + 100;
+                    b.zloto = b.zloto + 100;
                     postep1 = 1;
                     b.bohaterStatus = "1";
                 }
@@ -89,9 +89,9 @@ namespace ConsoleApp1
                 }
                 if ((pokonaniPrzeciwnicy >= 10) && (postep3 == 0))
                 {
-                    Bohater.ruda = Bohater.ruda + 20;
-                    Bohater.skora = Bohater.skora + 20;
-                    Bohater.klejnot = Bohater.klejnot + 10;
+                    b.ruda = b.ruda + 20;
+                    b.skora = b.skora + 20;
+                    b.klejnot = b.klejnot + 10;
                     postep3 = 1;
                     b.bohaterStatus = "3";
                 }

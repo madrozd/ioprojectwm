@@ -8,7 +8,7 @@ namespace ConsoleApp1
     {
         public static void Menu(Bohater b)
         {
-            Console.WriteLine("1.Dalej\n2.Wyświetl statystyki\n3.Odpocznij\n4.Handel\n5.Gildia kupców\n6.Gildia Wojowników\n7.Zakon mnichów\n8.Świątynia\n9.Wyświetl punktację");
+            Console.WriteLine("1.Dalej\n2.Wyświetl statystyki\n3.Odpocznij\n4.Handel\n5.Gildia kupców\n6.Gildia Wojowników\n7.Zakon mnichów\n8.Świątynia\n9.Zarządzaj ekwipunkiem\n10.Wyświetl punktację");
             string wyborAkcji = "";
             wyborAkcji = Console.ReadLine();
             switch (wyborAkcji)
@@ -21,13 +21,13 @@ namespace ConsoleApp1
                     }
                     break;
                 case "2":
-                    b.wyswietlStatystyki();
+                    b.wyswietlStatystyki(b);
                     break;
                 case "3":
                     Akcja.Odpocznij(b);
                     break;
                 case "4":
-                    Handel.wyborHandel();
+                    Handel.wyborHandel(b);
                     break;
                 case "5":
                     Gildia.gildiaKupcow(b);
@@ -42,7 +42,10 @@ namespace ConsoleApp1
                     Swiatynia.wyborSwiatynia(b);
                     break;
                 case "9":
-                    Akcja.wyswietlPunktacje();
+                    Bohater.zarzadzajEkwipunkiem(b);
+                    break;
+                case "10":
+                    Akcja.wyswietlPunktacje(b);
                     break;
                 default:
                     Console.WriteLine("Niepoprawny znak");
@@ -63,9 +66,9 @@ namespace ConsoleApp1
                 Console.WriteLine("Nie masz bierwiona");
             }
         }
-        public static void wyswietlPunktacje()
+        public static void wyswietlPunktacje(Bohater b)
         {
-            Console.WriteLine("Twoja punktacja: {0}",Bohater.punktacja);
+            Console.WriteLine("Twoja punktacja: {0}",b.punktacja);
         }
     }
 

@@ -19,9 +19,9 @@ namespace ConsoleApp1
             Console.WriteLine(bohater.nazwa);
             while (true)
             {
-                Akcja.Menu(bohater);
+                Akcja.Menu(bohater);    
             } 
-
+            
            
 
         }

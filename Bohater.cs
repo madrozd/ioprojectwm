@@ -9,12 +9,16 @@ namespace ConsoleApp1
     {
         public int PD;
         public int bierwiono;
-        public static int zloto;
-        public static int punktacja;
-        public static int ruda;
-        public static int skora;
-        public static int klejnot;
+        public int zloto;
+        public int punktacja;
+        public int ruda;
+        public int skora;
+        public int klejnot;
         public string bohaterStatus;
+        private static int postepMiecz = 0;
+        private static int postepZbroja = 0;
+        private static int postepHelm = 0;
+        private static int postepPas = 0;
 
         public Bohater()
         {
@@ -35,18 +39,18 @@ namespace ConsoleApp1
             bohaterStatus = "Nieznany";
         }
 
-        public void wyswietlStatystyki()
+        public void wyswietlStatystyki(Bohater b)
         {
-            Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6}",nazwa, sila, zrecznosc, wytrzymalosc, inteligencja, charyzma, PZ); ;
+            Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6}",b.nazwa, b.sila, b.zrecznosc, b.wytrzymalosc, b.inteligencja, b.charyzma, b.PZ);
         }
-        public void Awans()
+        public void Awans(Bohater b)
         {
-            int silaPrzed = sila;
-            int zrecznoscPrzed = zrecznosc;
-            int wytrzymaloscPrzed = wytrzymalosc;
-            int inteligencjaPrzed = inteligencja;
-            int charyzmaPrzed = charyzma;
-            if (PD >= 10)
+            int silaPrzed = b.sila;
+            int zrecznoscPrzed = b.zrecznosc;
+            int wytrzymaloscPrzed = b.wytrzymalosc;
+            int inteligencjaPrzed = b.inteligencja;
+            int charyzmaPrzed = b.charyzma;
+            if (b.PD >= 10)
             {
                 int punktyStatystyk = 5;
                 Console.WriteLine("Gratulacje pora na awans!");
@@ -57,23 +61,23 @@ namespace ConsoleApp1
                     switch (wyborStat)
                     {
                         case "1":
-                            sila++;
+                            b.sila++;
                             i++;
                             continue;
                         case "2":
-                            zrecznosc++;
+                            b.zrecznosc++;
                             i++;
                             continue;
                         case "3":
-                            wytrzymalosc++;
+                            b.wytrzymalosc++;
                             i++;
                             continue;
                         case "4":
-                            inteligencja++;
+                            b.inteligencja++;
                             i++;
                             continue;
                         case "5":
-                            charyzma++;
+                            b.charyzma++;
                             i++;
                             continue;
                         default:
@@ -81,7 +85,7 @@ namespace ConsoleApp1
                             continue;
                     }
                 }
-                Console.WriteLine("Siła: {0}\nZręczność: {1}\nWytrzymałość: {2}\nInteligencja: {3}\nCharyzma: {4}", sila, zrecznosc, wytrzymalosc, inteligencja, charyzma);
+                Console.WriteLine("Siła: {0}\nZręczność: {1}\nWytrzymałość: {2}\nInteligencja: {3}\nCharyzma: {4}", b.sila, b.zrecznosc, b.wytrzymalosc, b.inteligencja, b.charyzma);
                 Console.WriteLine("1. Zaakceptuj wybór statystyk");
                 Console.WriteLine("2. Zrezygnuj");
                 string Potwierdzenie = " ";
@@ -93,16 +97,16 @@ namespace ConsoleApp1
                     {
                         case "1":
                             Console.WriteLine("Twój wybór został potwierdzony");
-                            PD = PD - 10;
-                            PZ = wytrzymalosc * 10;
+                            b.PD = b.PD - 10;
+                            b.PZ = b.wytrzymalosc * 10;
                             break;
                         case "2":
                             Console.WriteLine("Odrzuciłeś swój wybór. Twoje punkty doświadczenia nie zostaną zabrane");
-                            sila = silaPrzed;
-                            zrecznosc = zrecznoscPrzed;
-                            wytrzymalosc = wytrzymaloscPrzed;
-                            inteligencja = inteligencjaPrzed;
-                            charyzma = charyzmaPrzed;
+                            b.sila = silaPrzed;
+                            b.zrecznosc = zrecznoscPrzed;
+                            b.wytrzymalosc = wytrzymaloscPrzed;
+                            b.inteligencja = inteligencjaPrzed;
+                            b.charyzma = charyzmaPrzed;
                             break;
 
                         default:
@@ -119,7 +123,7 @@ namespace ConsoleApp1
             }
         }
 
-        public void zarzadzajEkwipunkiem()
+        public static void zarzadzajEkwipunkiem(Bohater b)
         {
             string wyborEkwipunek = " ";
             while (wyborEkwipunek != "3")
@@ -129,10 +133,10 @@ namespace ConsoleApp1
                 switch (wyborEkwipunek)
                 {
                     case "1":
-                        Console.WriteLine("Stan twojego ekwipunku:\nRuda: {0}\nSkóry: {1}\nKlejnoty: {2}\nZłoto: {3}", ruda, skora, klejnot, zloto);
+                        Console.WriteLine("Stan twojego ekwipunku:\nRuda: {0}\nSkóry: {1}\nKlejnoty: {2}\nZłoto: {3}", b.ruda, b.skora, b.klejnot, b.zloto);
                         continue;
                     case "2":
-                        wytwarzajEkwipunek();
+                        wytwarzajEkwipunek(b);
                         continue;
                     case "3":
                         Console.WriteLine("Wyjście z menu ekwipunku");
@@ -144,26 +148,70 @@ namespace ConsoleApp1
             }
             Console.Clear();
         }
-        public void wytwarzajEkwipunek()
+        public static void wytwarzajEkwipunek(Bohater b)
         {
             string wyborTworz = " ";
-            while (wyborTworz != "3")
+            while (wyborTworz != "5")
             {
-                Console.WriteLine("1. Magiczny miecz");
+                Console.WriteLine("1. Magiczny miecz\n5.Wyjdź");
                 wyborTworz = Console.ReadLine();
                 switch (wyborTworz)
                 {
                     case "1":
-                        Przedmiot magicznymiecz = new Przedmiot("Magiczny miecz", 10, 1, 5, 3, 99, 100);
-                        sila = sila + magicznymiecz.sila;
-                        zrecznosc = zrecznosc + magicznymiecz.zrecznosc;
-                        wytrzymalosc = wytrzymalosc + magicznymiecz.wytrzymalosc;
-                        inteligencja = inteligencja + magicznymiecz.inteligencja;
-                        charyzma = charyzma + magicznymiecz.charyzma;
-                        Console.WriteLine("Wykułeś magiczny miecz!!!");
-                        Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
-                        continue;
+                        if (postepMiecz == 0)
+                        {
+                            if (b.ruda >= 5 && b.skora >= 3 && b.klejnot >= 1)
+                            {
+                                Przedmiot magicznymiecz = new Przedmiot("Magiczny miecz", 2, 2, 2, 2, 2, 100);
+                                b.sila = b.sila + magicznymiecz.sila;
+                                b.zrecznosc = b.zrecznosc + magicznymiecz.zrecznosc;
+                                b.wytrzymalosc = b.wytrzymalosc + magicznymiecz.wytrzymalosc;
+                                b.inteligencja = b.inteligencja + magicznymiecz.inteligencja;
+                                b.charyzma = b.charyzma + magicznymiecz.charyzma;
+                                b.ruda = b.ruda - 5;
+                                b.skora = b.skora - 5;
+                                b.klejnot = b.klejnot - 1;
+                                postepMiecz++;
+                                Console.WriteLine("Wykułeś magiczny miecz!!!");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco do ulepszenia miecza");
+                            }
+                        }
+                        if (postepMiecz == 1)
+                        {
+                            if (b.ruda >= 20 && b.skora >= 10 && b.klejnot >= 4)
+                            {
+                                b.sila = b.sila + magicznymiecz.sila;
+                                b.zrecznosc = b.zrecznosc + magicznymiecz.zrecznosc;
+                                b.wytrzymalosc = b.wytrzymalosc + magicznymiecz.wytrzymalosc;
+                                b.inteligencja = b.inteligencja + magicznymiecz.inteligencja;
+                                b.charyzma = b.charyzma + magicznymiecz.charyzma;
+                                b.ruda = b.ruda - 5;
+                                b.skora = b.skora - 5;
+                                b.klejnot = b.klejnot - 1;
+                                postepMiecz++;
+                                Console.WriteLine("Wykułeś magiczny miecz!!!");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco do ulepszenia miecza");
+                            }
+
+                        }
+                            continue;
+                    case "2":
+                        break;
                     case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
                         Console.WriteLine("Wyjście z menu ekwipunku");
                         continue;
                     default:
