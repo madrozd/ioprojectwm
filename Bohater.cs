@@ -15,10 +15,10 @@ namespace ConsoleApp1
         public int skora;
         public int klejnot;
         public string bohaterStatus;
-        private static int postepMiecz = 0;
-        private static int postepZbroja = 0;
-        private static int postepHelm = 0;
-        private static int postepPas = 0;
+        private  int postepMiecz = 0;
+        private  int postepZbroja = 0;
+        private  int postepHelm = 0;
+        private  int postepPas = 0;
 
         public Bohater()
         {
@@ -123,7 +123,7 @@ namespace ConsoleApp1
             }
         }
 
-        public static void zarzadzajEkwipunkiem(Bohater b)
+        public static void zarzadzajEkwipunkiem(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h, Przedmiot p)
         {
             string wyborEkwipunek = " ";
             while (wyborEkwipunek != "3")
@@ -133,10 +133,10 @@ namespace ConsoleApp1
                 switch (wyborEkwipunek)
                 {
                     case "1":
-                        Console.WriteLine("Stan twojego ekwipunku:\nRuda: {0}\nSkóry: {1}\nKlejnoty: {2}\nZłoto: {3}", b.ruda, b.skora, b.klejnot, b.zloto);
+                        Console.WriteLine("Stan twojego ekwipunku:\nRuda: {0}\nSkóry: {1}\nKlejnoty: {2}\nZłoto: {3}\nUlepszenie miecza: {4}\nUlepszenie zbroi: {5}\nUlepszenie hełmu: {6}\nUlepszenie pasu: {7}\n", b.ruda, b.skora, b.klejnot, b.zloto, b.postepMiecz, b.postepZbroja, b.postepHelm, b.postepPas);
                         continue;
                     case "2":
-                        wytwarzajEkwipunek(b);
+                        wytwarzajEkwipunek(b, m, z, h, p);
                         continue;
                     case "3":
                         Console.WriteLine("Wyjście z menu ekwipunku");
@@ -148,68 +148,225 @@ namespace ConsoleApp1
             }
             Console.Clear();
         }
-        public static void wytwarzajEkwipunek(Bohater b)
+        public static void wytwarzajEkwipunek(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h , Przedmiot p)
         {
             string wyborTworz = " ";
             while (wyborTworz != "5")
             {
-                Console.WriteLine("1. Magiczny miecz\n5.Wyjdź");
+                Console.WriteLine("1.Ulepsz miecz\n2.Ulepsz zbroję\n3.Ulepsz hełm\n4.Ulepsz pas\n5.Wyjdź");
                 wyborTworz = Console.ReadLine();
                 switch (wyborTworz)
                 {
                     case "1":
-                        if (postepMiecz == 0)
+                        if (b.postepMiecz == 0)
                         {
                             if (b.ruda >= 5 && b.skora >= 3 && b.klejnot >= 1)
                             {
-                                Przedmiot magicznymiecz = new Przedmiot("Magiczny miecz", 2, 2, 2, 2, 2, 100);
-                                b.sila = b.sila + magicznymiecz.sila;
-                                b.zrecznosc = b.zrecznosc + magicznymiecz.zrecznosc;
-                                b.wytrzymalosc = b.wytrzymalosc + magicznymiecz.wytrzymalosc;
-                                b.inteligencja = b.inteligencja + magicznymiecz.inteligencja;
-                                b.charyzma = b.charyzma + magicznymiecz.charyzma;
+                                m.sila = m.sila + 2;
+                                m.zrecznosc = m.zrecznosc + 2;
+                                m.stan = "ulepszony";
+                                b.sila = b.sila + m.sila;
+                                b.zrecznosc = b.zrecznosc + m.zrecznosc;            
                                 b.ruda = b.ruda - 5;
-                                b.skora = b.skora - 5;
+                                b.skora = b.skora - 3;
                                 b.klejnot = b.klejnot - 1;
-                                postepMiecz++;
-                                Console.WriteLine("Wykułeś magiczny miecz!!!");
+                                b.postepMiecz++;
+                                Console.WriteLine("Wykułeś ulepszony !!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
-                                
+                                Console.ReadKey();
+                                break;
                             }
                             else
                             {
-                                Console.WriteLine("Nie masz wystarczająco do ulepszenia miecza");
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
                             }
                         }
-                        if (postepMiecz == 1)
+                        if (b.postepMiecz == 1)
                         {
-                            if (b.ruda >= 20 && b.skora >= 10 && b.klejnot >= 4)
+                            if (b.ruda >= 10 && b.skora >= 6 && b.klejnot >= 2)
                             {
-                                b.sila = b.sila + magicznymiecz.sila;
-                                b.zrecznosc = b.zrecznosc + magicznymiecz.zrecznosc;
-                                b.wytrzymalosc = b.wytrzymalosc + magicznymiecz.wytrzymalosc;
-                                b.inteligencja = b.inteligencja + magicznymiecz.inteligencja;
-                                b.charyzma = b.charyzma + magicznymiecz.charyzma;
-                                b.ruda = b.ruda - 5;
-                                b.skora = b.skora - 5;
-                                b.klejnot = b.klejnot - 1;
-                                postepMiecz++;
+                                m.sila = m.sila + 4;
+                                m.zrecznosc = m.zrecznosc + 4;
+                                m.stan = "mistrzowski";
+                                b.sila = (b.sila - 2) + m.sila;
+                                b.zrecznosc = (b.zrecznosc -2) + m.zrecznosc;
+                                b.ruda = b.ruda - 10;
+                                b.skora = b.skora - 6;
+                                b.klejnot = b.klejnot - 2;
+                                b.postepMiecz++;
                                 Console.WriteLine("Wykułeś magiczny miecz!!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                Console.ReadKey();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
+                            }
+
+                        }
+                        if (b.postepMiecz == 2)
+                        {
+                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                        }
+                        break;
+                    case "2":
+                        if (b.postepZbroja == 0)
+                        {
+                            if (b.ruda >= 5 && b.skora >= 3)
+                            {
+                                z.wytrzymalosc = z.wytrzymalosc + 3;
+                                z.stan = "ulepszony";
+                                b.wytrzymalosc = b.wytrzymalosc + z.wytrzymalosc;
+                                b.ruda = b.ruda - 5;
+                                b.skora = b.skora - 3;
+                                b.postepZbroja++;
+                                Console.WriteLine("Wykułeś ulepszoną zbroję");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                Console.ReadKey();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
+                            }
+                        }
+                        if (b.postepZbroja == 1)
+                        {
+                            if (b.ruda >= 15 && b.skora >= 10)
+                            {
+                                z.zrecznosc = z.zrecznosc + 1;
+                                z.wytrzymalosc = z.wytrzymalosc + 6;
+                                z.stan = "mistrzowska";
+                                b.zrecznosc = b.zrecznosc + z.zrecznosc;
+                                b.wytrzymalosc = (b.wytrzymalosc - 3) + z.wytrzymalosc;
+                                b.ruda = b.ruda - 15;
+                                b.skora = b.skora - 10;
+                                b.postepZbroja++;
+                                Console.WriteLine("Wykułeś magiczną zbroję!!!");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                Console.ReadKey();
+                                break;
 
                             }
                             else
                             {
-                                Console.WriteLine("Nie masz wystarczająco do ulepszenia miecza");
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
                             }
 
                         }
-                            continue;
-                    case "2":
+                        if (b.postepZbroja == 2)
+                        {
+                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                        }
                         break;
                     case "3":
+                        if (b.postepHelm == 0)
+                        {
+                            if (b.ruda >= 5 && b.skora >= 1 && b.klejnot >= 2)
+                            {
+                                h.wytrzymalosc = h.wytrzymalosc + 2;
+                                h.inteligencja = h.inteligencja + 2;
+                                h.stan = "ulepszony";
+                                b.wytrzymalosc = b.wytrzymalosc + h.wytrzymalosc;
+                                b.inteligencja = b.inteligencja + h.inteligencja;
+                                b.ruda = b.ruda - 5;
+                                b.skora = b.skora - 1;
+                                b.klejnot = b.klejnot - 2;
+                                b.postepHelm++;
+                                Console.WriteLine("Wykułeś ulepszony hełm!!!");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                Console.ReadKey();
+                                break;
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
+                            }
+                        }
+                        if (b.postepHelm == 1)
+                        {
+                            if (b.ruda >= 10 && b.skora >= 2 && b.klejnot >= 4)
+                            {
+                                h.wytrzymalosc = h.wytrzymalosc + 6;
+                                h.inteligencja = h.inteligencja + 6;
+                                h.stan = "mistrzowski";
+                                b.wytrzymalosc = (b.wytrzymalosc - 2) + h.wytrzymalosc;
+                                b.inteligencja = (b.inteligencja - 2) + h.inteligencja;
+                                b.ruda = b.ruda - 10;
+                                b.skora = b.skora - 2;
+                                b.klejnot = b.klejnot - 4;
+                                b.postepHelm++;
+                                Console.WriteLine("Wykułeś magiczny hełm!!!");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                Console.ReadKey();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
+                            }
+
+                        }
+                        if (b.postepHelm == 2)
+                        {
+                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                        }
                         break;
                     case "4":
+                        if (b.postepPas == 0)
+                        {
+                            if (b.ruda >= 5 && b.skora >= 3)
+                            {
+                                p.stan = "ulepszony";
+                                b.ruda = b.ruda - 20;
+                                b.skora = b.skora - 2;
+                                b.postepPas++;
+                                Console.WriteLine("Zmodyfikowałeś swój pas do dalszych ulepszeń");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                Console.ReadKey();
+                                break;
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
+                            }
+                        }
+                        if (b.postepPas == 1)
+                        {
+                            if (b.klejnot >= 20)
+                            {
+                                p.sila = p.sila + 10;
+                                p.zrecznosc = p.zrecznosc + 10;
+                                p.wytrzymalosc = p.wytrzymalosc + 10;
+                                p.inteligencja = p.inteligencja + 10;
+                                p.charyzma = p.charyzma + 30;
+                                p.stan = "mistrzowski";
+                                b.sila = b.sila + p.sila;
+                                b.zrecznosc = b.zrecznosc + p.zrecznosc;
+                                b.wytrzymalosc = b.wytrzymalosc + p.wytrzymalosc;
+                                b.inteligencja = b.inteligencja  + p.inteligencja;
+                                b.charyzma = b.charyzma + p.charyzma;
+                                b.klejnot = b.klejnot - 20;
+                                b.postepPas++;
+                                Console.WriteLine("Wykułeś magiczny pas");
+                                Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
+                                Console.ReadKey();
+                                break;
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nie masz wystarczająco materiałów do ulepszenia");
+                            }
+
+                        }
+                        if (b.postepPas == 2)
+                        {
+                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                        }
                         break;
                     case "5":
                         Console.WriteLine("Wyjście z menu ekwipunku");
@@ -239,7 +396,5 @@ namespace ConsoleApp1
             }
                     Console.WriteLine("Witaj {0}", b.nazwa);
         }
-
-
     }
 }

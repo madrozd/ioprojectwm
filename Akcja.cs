@@ -6,7 +6,7 @@ namespace ConsoleApp1
 {
     class Akcja
     {
-        public static void Menu(Bohater b)
+        public static void Menu(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h, Przedmiot p)
         {
             Console.WriteLine("1.Dalej\n2.Wyświetl statystyki\n3.Odpocznij\n4.Handel\n5.Gildia kupców\n6.Gildia Wojowników\n7.Zakon mnichów\n8.Świątynia\n9.Zarządzaj ekwipunkiem\n10.Wyświetl punktację");
             string wyborAkcji = "";
@@ -42,7 +42,7 @@ namespace ConsoleApp1
                     Swiatynia.wyborSwiatynia(b);
                     break;
                 case "9":
-                    Bohater.zarzadzajEkwipunkiem(b);
+                    Bohater.zarzadzajEkwipunkiem(b, m, z, h, p);
                     break;
                 case "10":
                     Akcja.wyswietlPunktacje(b);
@@ -59,6 +59,7 @@ namespace ConsoleApp1
             {
                Console.WriteLine("Odpoczywasz");
                b.PZ = b.wytrzymalosc * 10;
+               b.bierwiono--;
                 
             }
             else

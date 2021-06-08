@@ -6,16 +6,16 @@ namespace ConsoleApp1
 {
     class Przedmiot : Arkusz
     {
-        public int wartosc;
-        public Przedmiot(string nazwa, int sila, int zrecznosc, int wytrzymalosc, int inteligencja, int charyzma, int wartosc)
+        public string stan;
+        public Przedmiot(string nazwa, int sila, int zrecznosc, int wytrzymalosc, int inteligencja, int charyzma)
         {
             this.nazwa = nazwa;
             this.sila = sila;
             this.zrecznosc = zrecznosc;
             this.wytrzymalosc = wytrzymalosc;
             this.inteligencja = inteligencja;
-            this.charyzma = charyzma;
-            this.wartosc = wartosc;
+            this.charyzma = charyzma;    
+            stan = "podstawowy";
             PZ = 0;
         }
     }
