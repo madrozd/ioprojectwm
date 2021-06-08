@@ -16,17 +16,20 @@ namespace ConsoleApp1
 
         public static void wyborGildii()
         {
-            Console.WriteLine("Przemierzając miasto natrafiasz na rynek ...\nDecydujesz się na:\n1.Kupcy\n2.Wojownicy\n3.Mnisi ");
+            Console.WriteLine("Przemierzając osadę natrafiasz na rynek. Na rynku dostrzegasz tablicę z trzema symbolami: kupieckim wozem, wojowniczymi mieczem z tarczą oraz religijnym kołowrotem. Oznaczają one, że gildie przyjmują nowych chętnych. Postanawiasz dołączyć do jednej z nich.\nDecydujesz się na:\n1.Kupcy\n2.Wojownicy\n3.Mnisi ");
             gildia = Console.ReadLine();
             switch (gildia)
             {
                 case"1":
+                    Console.Clear();
                     Console.WriteLine("Wybrałeś gildię kupców");
                     break;
                 case"2":
+                    Console.Clear();
                     Console.WriteLine("Zdecydowałeś się dołączyć do gildii wojowników");
                     break;
                 case "3":
+                    Console.Clear();
                     Console.WriteLine("Obrałeś drogę mnicha");
                     break;
                 default:

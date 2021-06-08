@@ -14,6 +14,7 @@ namespace ConsoleApp1
             switch (wyborAkcji)
             {
                 case "1":
+                    Console.Clear();
                     Przygody.Zdarzenia(b);
                     if (Przygody.los < 15)
                     {
@@ -21,30 +22,39 @@ namespace ConsoleApp1
                     }
                     break;
                 case "2":
+                    Console.Clear();
                     b.wyswietlStatystyki(b);
                     break;
                 case "3":
+                    Console.Clear();
                     Akcja.Odpocznij(b);
                     break;
                 case "4":
+                    Console.Clear();
                     Handel.wyborHandel(b);
                     break;
                 case "5":
+                    Console.Clear();
                     Gildia.gildiaKupcow(b);
                     break;
                 case "6":
+                    Console.Clear();
                     Gildia.gildiaWojownikow(b);
                     break;
                 case "7":
+                    Console.Clear();
                     Gildia.gildiaMnichow(b);
                     break;
                 case "8":
+                    Console.Clear();
                     Swiatynia.wyborSwiatynia(b);
                     break;
                 case "9":
+                    Console.Clear();
                     Bohater.zarzadzajEkwipunkiem(b, m, z, h, p);
                     break;
                 case "10":
+                    Console.Clear();
                     Akcja.wyswietlPunktacje(b);
                     break;
                 default:
