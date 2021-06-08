@@ -31,6 +31,8 @@ namespace ConsoleApp1
                 }
             }
             Gildia.pokonaniPrzeciwnicy++;
+            b.PD = b.PD + p.nagrodaP;
+            b.zloto = b.zloto + p.nagrodaZ;
             p.PZ = p.maxPZ;
 
 
@@ -106,6 +108,11 @@ namespace ConsoleApp1
             else 
             {
                 Console.WriteLine("Przeciwnik pokonany");
+            }
+            if (b.PZ <= 0)
+            {
+                Console.WriteLine("Przegrałes.\nKoniec gry.");
+                Environment.Exit(0);
             }
         }
         public static void Obrona(Bohater b, Przeciwnik p)

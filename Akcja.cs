@@ -14,7 +14,7 @@ namespace ConsoleApp1
             switch (wyborAkcji)
             {
                 case "1":
-                    Przygody.Zdarzenia();
+                    Przygody.Zdarzenia(b);
                     if (Przygody.los < 15)
                     {
                         Przygody.los++;
