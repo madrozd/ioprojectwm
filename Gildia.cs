@@ -48,14 +48,14 @@ namespace ConsoleApp1
                     Console.WriteLine("Jako nagrodę za twoje kupieckie osiągnięcia damy ci ...");
                     b.zloto = b.zloto + 100;
                     postep1 = 1;
-                    b.bohaterStatus = "1";
+                    b.bohaterStatus = "Targowy handlarz";
                 }
                 if ((zarobioneZloto >= 500) && (postep2 == 0))
                 {
                     b.inteligencja = b.inteligencja + 2;
                     b.zrecznosc = b.zrecznosc + 1;
                     postep2 = 1;
-                    b.bohaterStatus = "2";
+                    b.bohaterStatus = "Kupiec";
                 }
                 if ((zarobioneZloto >= 1000) && (postep3 == 0))
                 {
@@ -63,7 +63,7 @@ namespace ConsoleApp1
                     b.skora = b.skora + 20;
                     b.klejnot = b.klejnot + 10;
                     postep3 = 1;
-                    b.bohaterStatus = "3";
+                    b.bohaterStatus = "Mistrz kupiecki";
                 }
             }
             else
@@ -81,22 +81,22 @@ namespace ConsoleApp1
                     Console.WriteLine("Jako nagrodę za twoją waleczność ...");
                     b.zloto = b.zloto + 100;
                     postep1 = 1;
-                    b.bohaterStatus = "1";
+                    b.bohaterStatus = "Giermek";
                 }
-                if ((pokonaniPrzeciwnicy >= 5) && (postep2 == 0))
+                if ((pokonaniPrzeciwnicy >= 2) && (postep2 == 0))
                 {
                     b.sila = b.sila + 2;
                     b.zrecznosc = b.zrecznosc + 2;
                     postep2 = 1;
-                    b.bohaterStatus = "2";
+                    b.bohaterStatus = "Wojownik";
                 }
-                if ((pokonaniPrzeciwnicy >= 10) && (postep3 == 0))
+                if ((pokonaniPrzeciwnicy >= 3) && (postep3 == 0))
                 {
                     b.ruda = b.ruda + 20;
                     b.skora = b.skora + 20;
                     b.klejnot = b.klejnot + 10;
                     postep3 = 1;
-                    b.bohaterStatus = "3";
+                    b.bohaterStatus = "Rycerz";
                 }
             }
             else
@@ -116,7 +116,7 @@ namespace ConsoleApp1
                     b.wytrzymalosc = b.wytrzymalosc + 1;
                     b.inteligencja = b.inteligencja + 1;
                     postep1 = 1;
-                    b.bohaterStatus = "1";
+                    b.bohaterStatus = "Nowicjusz";
                 }
                 if ((uznanieBostwo >= 50) && (postep2 == 0))
                 {
@@ -124,7 +124,7 @@ namespace ConsoleApp1
                     b.wytrzymalosc = b.wytrzymalosc + 2;
                     b.inteligencja = b.inteligencja + 2;
                     postep2 = 1;
-                    b.bohaterStatus = "2";
+                    b.bohaterStatus = "Mnich";
                 }
                 if ((uznanieBostwo >= 100) && (postep3 == 0))
                 {
@@ -132,7 +132,7 @@ namespace ConsoleApp1
                     b.wytrzymalosc = b.wytrzymalosc + 3;
                     b.inteligencja = b.inteligencja + 3;
                     postep3 = 1;
-                    b.bohaterStatus = "3";
+                    b.bohaterStatus = "Przeor";
                 }
             }
             else

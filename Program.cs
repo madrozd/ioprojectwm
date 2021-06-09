@@ -25,15 +25,13 @@ namespace ConsoleApp1
             bohater.inteligencja = 10;
             bohater.charyzma = 10;
             bohater.PZ = 100;
+            bohater.PD = 20;
             Przygody.Poczatek(bohater);
             Console.WriteLine(bohater.nazwa);
             while (true)
             {
                 Akcja.Menu(bohater, miecz, zbroja, helm, pas);    
             } 
-            
-           
-
         }
     }
 }

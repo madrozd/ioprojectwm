@@ -6,6 +6,7 @@ namespace ConsoleApp1
 {
     class Akcja
     {
+        private static int odwiedzinyKmiec = 0;
         public static void Menu(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h, Przedmiot p)
         {
             Console.WriteLine("1.Dalej\n2.Wyświetl statystyki\n3.Odpocznij\n4.Handel\n5.Gildia kupców\n6.Gildia Wojowników\n7.Zakon mnichów\n8.Świątynia\n9.Zarządzaj ekwipunkiem\n10.Wyświetl punktację");
@@ -56,6 +57,18 @@ namespace ConsoleApp1
                 case "10":
                     Console.Clear();
                     Akcja.wyswietlPunktacje(b);
+                    break;
+                case "Kmiec":
+                    if (Akcja.odwiedzinyKmiec == 0)
+                    {
+                        Console.WriteLine("Kmieć opowiada o swoim problemie ...");
+                        b.drugieZakonczenie = 1;
+                        Akcja.odwiedzinyKmiec = 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Drzwi są zamknięte");
+                    }
                     break;
                 default:
                     Console.WriteLine("Niepoprawny znak");

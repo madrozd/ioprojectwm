@@ -31,7 +31,7 @@ namespace ConsoleApp1
                 }
             }
             Gildia.pokonaniPrzeciwnicy++;
-            b.PD = b.PD + p.nagrodaP;
+            b.PD = b.PD + p.nagrodaP + (b.inteligencja / 2);
             b.zloto = b.zloto + p.nagrodaZ;
             p.PZ = p.maxPZ;
 

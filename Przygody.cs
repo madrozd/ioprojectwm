@@ -306,18 +306,36 @@ namespace ConsoleApp1
             }
             if(licznikPrzygod == 9)
             {
-                Console.WriteLine("WALKA Z BOSSEM!!!111!!11!!3@!@!!!");
+                if (b.drugieZakonczenie == 0)
+                {
+                    Console.WriteLine("WALKA Z BOSSEM!!!111!!11!!3@!@!!!");
                     /*
                     Przeciwnik Bożątko = new Przeciwnik("Bożątko", 5, 5, 5, 5, 5);
                     Walka.Pojedynek(b, Bożątko);
                     */
+                    if (b.punktacja >=40)
+                    {
+                        Console.WriteLine("Następnym razem spróbuj odwiedzić tego kto cię uratował");
+                    }
+                }
+                if (b.drugieZakonczenie == 1)
+                {
+                    Console.WriteLine("Alternatywna walka wraz z innym zakończeniem");
+                }
                 licznikPrzygod++;
             }
             if(licznikPrzygod == 10)
             {
-                Console.WriteLine("EPILOG");
-                //Wstawić staty etc
-                Environment.Exit(0);
+                if (b.drugieZakonczenie == 0)
+                {
+                    Console.WriteLine("EPILOG 1");
+                    Environment.Exit(0);
+                }
+                if (b.drugieZakonczenie == 1)
+                {
+                    Console.WriteLine("Epilog 2");
+                    Environment.Exit(0);
+                }
             }
         }
         public static void losujPrzygody()

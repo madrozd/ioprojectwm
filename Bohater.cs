@@ -15,6 +15,7 @@ namespace ConsoleApp1
         public int skora;
         public int klejnot;
         public string bohaterStatus;
+        public int drugieZakonczenie = 0;
         private  int postepMiecz = 0;
         private  int postepZbroja = 0;
         private  int postepHelm = 0;
@@ -41,7 +42,28 @@ namespace ConsoleApp1
 
         public void wyswietlStatystyki(Bohater b)
         {
-            Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6}",b.nazwa, b.sila, b.zrecznosc, b.wytrzymalosc, b.inteligencja, b.charyzma, b.PZ);
+            string wybor = "";
+            while (!(wybor == "3"))
+            {
+                Console.WriteLine("1.Wyświetl statystyki\n2.Awansuj na kolejny poziom (wymaga 10PD)\n3.Opuśc menu");
+                wybor = Console.ReadLine();
+                switch (wybor)
+                {
+                    case "1":
+                        Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6},\nStatus bohatera: {7}\nPD: {8}", b.nazwa, b.sila, b.zrecznosc, b.wytrzymalosc, b.inteligencja, b.charyzma, b.PZ, b.bohaterStatus, b.PD);
+                        break;
+                    case "2":
+                        b.Awans(b);
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Niepoprawny znak");
+                            break;
+                        }
+
+                }
+            }
+            Console.Clear();
         }
         public void Awans(Bohater b)
         {
@@ -133,7 +155,7 @@ namespace ConsoleApp1
                 switch (wyborEkwipunek)
                 {
                     case "1":
-                        Console.WriteLine("Stan twojego ekwipunku:\nRuda: {0}\nSkóry: {1}\nKlejnoty: {2}\nZłoto: {3}\nUlepszenie miecza: {4}\nUlepszenie zbroi: {5}\nUlepszenie hełmu: {6}\nUlepszenie pasu: {7}\n", b.ruda, b.skora, b.klejnot, b.zloto, b.postepMiecz, b.postepZbroja, b.postepHelm, b.postepPas);
+                        Console.WriteLine("Stan twojego ekwipunku:\nRuda: {0}\nSkóry: {1}\nKlejnoty: {2}\nZłoto: {3}\nUlepszenie miecza: {4}\nUlepszenie zbroi: {5}\nUlepszenie hełmu: {6}\nUlepszenie pasa: {7}\n", b.ruda, b.skora, b.klejnot, b.zloto, b.postepMiecz, b.postepZbroja, b.postepHelm, b.postepPas);
                         continue;
                     case "2":
                         wytwarzajEkwipunek(b, m, z, h, p);
@@ -171,6 +193,7 @@ namespace ConsoleApp1
                                 b.skora = b.skora - 3;
                                 b.klejnot = b.klejnot - 1;
                                 b.postepMiecz++;
+                                b.punktacja = b.punktacja + 10;
                                 Console.WriteLine("Wykułeś ulepszony !!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
@@ -194,6 +217,7 @@ namespace ConsoleApp1
                                 b.skora = b.skora - 6;
                                 b.klejnot = b.klejnot - 2;
                                 b.postepMiecz++;
+                                b.punktacja = b.punktacja + 30;
                                 Console.WriteLine("Wykułeś magiczny miecz!!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
@@ -224,6 +248,7 @@ namespace ConsoleApp1
                                 Console.WriteLine("Wykułeś ulepszoną zbroję");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
+                                b.punktacja = b.punktacja + 10;
                                 break;
                             }
                             else
@@ -243,6 +268,7 @@ namespace ConsoleApp1
                                 b.ruda = b.ruda - 15;
                                 b.skora = b.skora - 10;
                                 b.postepZbroja++;
+                                b.punktacja = b.punktacja + 30;
                                 Console.WriteLine("Wykułeś magiczną zbroję!!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
@@ -274,6 +300,7 @@ namespace ConsoleApp1
                                 b.skora = b.skora - 1;
                                 b.klejnot = b.klejnot - 2;
                                 b.postepHelm++;
+                                b.punktacja = b.punktacja + 10;
                                 Console.WriteLine("Wykułeś ulepszony hełm!!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
@@ -298,6 +325,7 @@ namespace ConsoleApp1
                                 b.skora = b.skora - 2;
                                 b.klejnot = b.klejnot - 4;
                                 b.postepHelm++;
+                                b.punktacja = b.punktacja + 30;
                                 Console.WriteLine("Wykułeś magiczny hełm!!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
@@ -326,6 +354,7 @@ namespace ConsoleApp1
                                 Console.WriteLine("Zmodyfikowałeś swój pas do dalszych ulepszeń");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
+                                b.punktacja = b.punktacja + 10;
                                 break;
 
                             }
@@ -354,6 +383,7 @@ namespace ConsoleApp1
                                 Console.WriteLine("Wykułeś magiczny pas");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
+                                b.punktacja = b.punktacja + 30;
                                 break;
 
                             }

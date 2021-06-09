@@ -14,7 +14,7 @@ namespace ConsoleApp1
                 string wyborOpcja = "";
                 while (!(wyborOpcja == "3"))
                 {
-                    Console.WriteLine("Wkroczyłeś do świątyni\n1.Pomódl się\n2.Ofiaruj 100 sztuk złota");
+                    Console.WriteLine("Wkroczyłeś do świątyni\n1.Pomódl się\n2.Ofiaruj 100 sztuk złota\n3.Opuść świątynie");
                     wyborOpcja = Console.ReadLine();
                     switch (wyborOpcja)
                     {
