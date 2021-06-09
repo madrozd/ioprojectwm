@@ -55,6 +55,7 @@ namespace ConsoleApp1
                     Console.WriteLine("CIOS KRYTYCZNY!\n Zadałeś {0} obrażeń!", obrazenia);
                     p.PZ = p.PZ - obrazenia;
                     Console.WriteLine("Życie przeciwnika: {0}",p.PZ);
+                    Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                     Console.ReadKey();
 
                 }
@@ -64,12 +65,14 @@ namespace ConsoleApp1
                     Console.WriteLine("Cios\n Zadałeś {0} obrażeń!", obrazenia);
                     p.PZ = p.PZ - obrazenia;
                     Console.WriteLine("Życie przeciwnika: {0}", p.PZ);
+                    Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                     Console.ReadKey();
                 }
             }
             else
             {
                 Console.WriteLine("Chybiony cios");
+                Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                 Console.ReadKey();
             }
             if (p.PZ > 0)
@@ -88,6 +91,7 @@ namespace ConsoleApp1
                         Console.WriteLine("CIOS KRYTYCZNY!\n zadał {0} obrażeń!", obrazenia);
                         b.PZ = b.PZ - obrazenia;
                         Console.WriteLine("Twoje życie: {0}", b.PZ);
+                        Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                         Console.ReadKey();
                     }
                     else
@@ -96,12 +100,14 @@ namespace ConsoleApp1
                         Console.WriteLine("Cios\n zadał {0} obrażeń!", obrazenia);
                         b.PZ = b.PZ - obrazenia;
                         Console.WriteLine("Twoje życie: {0}", b.PZ);
+                        Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                         Console.ReadKey();
                     }
                 }
                 else
                 {
                     Console.WriteLine("Chybiony cios");
+                    Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                     Console.ReadKey();
                 }
             }
@@ -146,6 +152,7 @@ namespace ConsoleApp1
                     Console.WriteLine("CIOS KRYTYCZNY!\n zadał {0} obrażeń!", obrazenia);
                     b.PZ = b.PZ - obrazenia;
                     Console.WriteLine("Twoje życie: {0}", b.PZ);
+                    Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                     Console.ReadKey();
                 }
                 else
@@ -154,12 +161,14 @@ namespace ConsoleApp1
                     Console.WriteLine("Cios\n zadał {0} obrażeń!", obrazenia);
                     b.PZ = b.PZ - obrazenia;
                     Console.WriteLine("Twoje życie: {0}", b.PZ);
+                    Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                     Console.ReadKey();
                 }
             }
             else
             {
                 Console.WriteLine("Chybiony cios");
+                Console.WriteLine("Naciśnij klawisz aby kontynuuować");
                 Console.ReadKey();
             }
         }

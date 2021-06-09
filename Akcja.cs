@@ -6,7 +6,7 @@ namespace ConsoleApp1
 {
     class Akcja
     {
-        private static int odwiedzinyKmiec = 0;
+        private static int odwiedzinyMieszko = 0;
         public static void Menu(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h, Przedmiot p)
         {
             Console.WriteLine("1.Dalej\n2.Wyświetl statystyki\n3.Odpocznij\n4.Handel\n5.Gildia kupców\n6.Gildia Wojowników\n7.Zakon mnichów\n8.Świątynia\n9.Zarządzaj ekwipunkiem\n10.Wyświetl punktację");
@@ -58,16 +58,18 @@ namespace ConsoleApp1
                     Console.Clear();
                     Akcja.wyswietlPunktacje(b);
                     break;
-                case "Kmiec":
-                    if (Akcja.odwiedzinyKmiec == 0)
+                case "Mieszko":
+                    Console.Clear();
+                    if (Akcja.odwiedzinyMieszko == 0)
                     {
-                        Console.WriteLine("Kmieć opowiada o swoim problemie ...");
+                        Console.WriteLine("'Widzę, że już Ci się polepszyło. No to dobrze, bogi mają Cię w opiece.' Po chwili rozmowy, Kmieć postanowił się podzielić z Tobą swoimi problemami. Okazuje się, że jego córka Lesława jest dręczona przez Gnieciucha - dosyć często męczył ją w nocy. Obecnie przebywa w chatce miejscowej zielarki, która stara się pomóc dziewczynie.");
+                        Console.WriteLine("Zaintrygowany opowieścią zastanawiasz się, czy byłaby jakaś szansa, abyś pomógł dziewczynie i tym samym odwdzięczył się Kmieciowi Mieszkowi za pomoc.");
                         b.drugieZakonczenie = 1;
-                        Akcja.odwiedzinyKmiec = 1;
+                        Akcja.odwiedzinyMieszko = 1;
                     }
                     else
                     {
-                        Console.WriteLine("Drzwi są zamknięte");
+                        Console.WriteLine("Kmiecia Mieszka nie ma w domu.");
                     }
                     break;
                 default:
