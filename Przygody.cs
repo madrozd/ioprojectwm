@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace ConsoleApp1
+namespace Gra
 {
     class Przygody
     {

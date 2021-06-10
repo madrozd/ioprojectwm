@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Gra
 {
-    class Akcja
+   public class Akcja
     {
         private static int odwiedzinyMieszko = 0;
         public static void Menu(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h, Przedmiot p)

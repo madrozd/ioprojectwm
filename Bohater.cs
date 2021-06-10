@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ConsoleApp1
+namespace Gra
 {
-    class Bohater : Arkusz
+    public class Bohater : Arkusz
     {
         public int PD;
         public int bierwiono;
@@ -408,24 +408,19 @@ namespace ConsoleApp1
             }
             Console.Clear();
         }
-        public static string nazwijPostac()
+        public bool nazwijPostac(string imie)
         {
-            Console.WriteLine("Nazwij swoją postać.");
-            string wybierzImie = "";
-            while (!(Regex.IsMatch(wybierzImie, @"^[a-zA-Z]+$")))
-            {
-                wybierzImie = Console.ReadLine();
-                if ((Regex.IsMatch(wybierzImie, @"^[a-zA-Z]+$")) == true)
+                if ((Regex.IsMatch(imie, @"^[a-zA-Z]+$")) == true)
                 {
-                    Console.WriteLine("Poprawne imię");
+                Console.WriteLine("Poprawne imię");
+                nazwa = imie;
+                return true;
                 }
                 else
                 {
-                    Console.WriteLine("Niepoprawne znaki");
+                Console.WriteLine("Niepoprawne znaki");
+                return false;
                 }
-            }
-            Console.WriteLine("Witaj {0}", wybierzImie);
-            return wybierzImie;
         }
         public void wyswietlStat(Bohater b)
         {
@@ -440,8 +435,6 @@ namespace ConsoleApp1
             }
         else
             {
-                int roznica = 40 - punktacja;
-                Console.WriteLine("Zabrakło ci {0} punktów do odblokowania wskazówki", roznica);
                 return 0;
             }
         

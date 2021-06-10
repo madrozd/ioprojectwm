@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Gra
 {
-    class Przedmiot : Arkusz
+   public class Przedmiot : Arkusz
     {
         public string stan;
         public Przedmiot(string nazwa, int sila, int zrecznosc, int wytrzymalosc, int inteligencja, int charyzma)

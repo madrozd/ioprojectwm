@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Gra
 {
-    class Arkusz
+    public class Arkusz
     {
         public string nazwa;
         public int PZ;

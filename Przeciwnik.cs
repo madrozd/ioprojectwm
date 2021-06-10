@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Gra
 {
-    class Przeciwnik : Arkusz
+   public class Przeciwnik : Arkusz
     {
         public int maxPZ;
         public int nagrodaZ;

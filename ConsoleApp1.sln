@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1.csproj", "{B20E44C2-3240-4D31-9A79-F859B8BB595E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gra", "Gra.csproj", "{B20E44C2-3240-4D31-9A79-F859B8BB595E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraTesty", "..\GraTesty\GraTesty.csproj", "{B79D5EAF-E761-45F1-8A62-55232A0D3594}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B20E44C2-3240-4D31-9A79-F859B8BB595E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B20E44C2-3240-4D31-9A79-F859B8BB595E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B20E44C2-3240-4D31-9A79-F859B8BB595E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B79D5EAF-E761-45F1-8A62-55232A0D3594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79D5EAF-E761-45F1-8A62-55232A0D3594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79D5EAF-E761-45F1-8A62-55232A0D3594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79D5EAF-E761-45F1-8A62-55232A0D3594}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

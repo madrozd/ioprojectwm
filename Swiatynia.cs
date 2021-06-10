@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1
+namespace Gra
 {
-    class Swiatynia
+   public class Swiatynia
     {
         private static int modlitwaIlosc = 0;
         public static void wyborSwiatynia(Bohater b)
@@ -22,7 +22,7 @@ namespace ConsoleApp1
                             Swiatynia.Modlitwa(b);
                             continue;
                         case "2":
-                            b.zloto = Ofiara(b.zloto);
+                            Swiatynia.Ofiara(b);
                             continue;
                         case "3":
                             Console.WriteLine("Opuszczasz świątynię");
@@ -91,19 +91,19 @@ namespace ConsoleApp1
                 Console.WriteLine("Wyczerpałeś swoją liczbę modlitw");
             }
         }
-        public static int Ofiara(int zloto)
+        public static void Ofiara(Bohater b)
         {
             Console.WriteLine("Zdecydowałeś się złożyć ofiarę");
-            if(zloto >= 100)
+            if(b.zloto >= 100)
             {
                 Console.WriteLine("Złożono ofiarę w postaci 100 sztuk złota");
                 modlitwaIlosc = 0;
-                return zloto - 100;
+                b.zloto = b.zloto - 100;
+                
             }
             else
             {
                 Console.WriteLine("Nie masz wystarczająco złota");
-                return zloto;
             }
         }
     }
