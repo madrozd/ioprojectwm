@@ -22,7 +22,7 @@ namespace ConsoleApp1
                             Swiatynia.Modlitwa(b);
                             continue;
                         case "2":
-                            Swiatynia.Ofiara(b);
+                            b.zloto = Ofiara(b.zloto);
                             continue;
                         case "3":
                             Console.WriteLine("Opuszczasz świątynię");
@@ -91,17 +91,19 @@ namespace ConsoleApp1
                 Console.WriteLine("Wyczerpałeś swoją liczbę modlitw");
             }
         }
-        public static void Ofiara(Bohater b)
+        public static int Ofiara(int zloto)
         {
             Console.WriteLine("Zdecydowałeś się złożyć ofiarę");
-            if(b.zloto >= 100)
+            if(zloto >= 100)
             {
                 Console.WriteLine("Złożono ofiarę w postaci 100 sztuk złota");
                 modlitwaIlosc = 0;
+                return zloto - 100;
             }
             else
             {
                 Console.WriteLine("Nie masz wystarczająco złota");
+                return zloto;
             }
         }
     }

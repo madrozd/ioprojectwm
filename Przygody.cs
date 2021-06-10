@@ -8,12 +8,12 @@ namespace ConsoleApp1
 {
     class Przygody
     {
-        private static int licznikPrzygod = 0;
+        public static int licznikPrzygod = 0;
         public static List<int> wybierzPrzygode = new List<int>();
+        private static int wskazowska = 0;
         public static int los = 0;
-        public static void Poczatek(Bohater b)
+        public static void Poczatek()
         {
-            Bohater.nazwijPostac(b);
             Console.WriteLine("Pominąć prolog?\n1.Nie\n2.Tak");
             string wybierzProlog = "";
             while(!(wybierzProlog == "1")&& !(wybierzProlog=="2"))
@@ -41,7 +41,7 @@ namespace ConsoleApp1
         public static void Zdarzenia(Bohater b)
         {
            string wybor = "";
-           if(licznikPrzygod < 5)
+           if(licznikPrzygod < 3)
             {
                 
                 if (wybierzPrzygode[los] == 0)
@@ -67,8 +67,9 @@ namespace ConsoleApp1
                                 continue;
                         }
                     }
-                    licznikPrzygod++;
                     wybor = "";
+                    Console.ReadKey();
+                    Console.Clear();
                 }
 
                 if (wybierzPrzygode[los] == 1)
@@ -77,10 +78,12 @@ namespace ConsoleApp1
                     Przeciwnik Bozatko = new Przeciwnik("Bożątko", 1, 2, 2, 10, 15);
                     Walka.Pojedynek(b, Bozatko);
                     Console.WriteLine("Bożątko padło. Postanawiasz usiąść na pobliskim pniu. Podchodzisz do niego i w oczy razi Cię blask. Za pniem znajduje się skrzynia z błyszczącymi okuciami. Znalazłeś skarb Bożątka!");
+                    Console.WriteLine("Otrzymujesz: 10 klejnotów, 20 sztuk złota oraz 5 skór");
                     b.klejnot = b.klejnot + 10;
                     b.zloto = b.zloto + 20;
                     b.skora = b.skora + 5;
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 2)
                 {
@@ -93,10 +96,11 @@ namespace ConsoleApp1
                         switch (wybor)
                         {
                             case "1":
-                                if (b.charyzma > 12)
+                                if (b.charyzma > 3)
                                 {
                                     Console.WriteLine("'Kici, kici, kici, chodź koteczku do mnie, kici, kici, kici, no chodź kiciusiu.' Kot słysząc Twoje słowa schodzi powoli z drzewa, po czym zaczyna się łasić do Twoich nóg.");
                                     Console.WriteLine("W podziękowaniu za uratowanie kota otrzymujesz exp a dziewczynka daje Ci klejnot\n");
+                                    Console.WriteLine("Otrzymałeś 1 klejnot oraz 10 punktów doświadczneia");
                                     b.klejnot++;
                                     b.PD = b.PD + 10;
                                 }
@@ -104,6 +108,7 @@ namespace ConsoleApp1
                                 {
                                     Console.WriteLine("Wspinasz się na drzewo. Powoli o ostrożnie stawiasz kolejne kroki. Nagle gałąź się pod Tobą załamuje, ale na szczęście udało Ci się złapać.");
                                     Console.WriteLine("Na dźwięk łamanej gałęzi, przerażony kot zeskakuje z drzewa wprost w ramiona dziewczynki. Uradowana dziewczynka w podziękowaniu za wykonane zadanie podarowuje Ci jeden kryształ.\n");
+                                    Console.WriteLine("Otrzymałeś jeden klejnot.");
                                     b.klejnot++;
                                 }
                                 break;
@@ -114,9 +119,11 @@ namespace ConsoleApp1
                                 Console.WriteLine("Niepoprawny znak");
                                 continue;
                         }
+                        
                     }
-                    licznikPrzygod++;
                     wybor = "";
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 3)
                 {
@@ -124,17 +131,19 @@ namespace ConsoleApp1
                     Przeciwnik Bobo = new Przeciwnik("Bobo", 1, 1, 3, 10, 10);
                     Walka.Pojedynek(b, Bobo);
                     Console.WriteLine("Dziękuję Ci, dziękuję! Uratowałeś moje dziecko i mnie. Nie mogę Ci za wiele ofiarować, mam jedynie stary kufer po moim mężu kupcu, którego wciąż nie udało mi się otworzyć. Proszę weź!");
-                    Console.WriteLine("Wewnątrz skrzyni znajdujesz kilka skór oraz parę klejnotów\n");
+                    Console.WriteLine("Wewnątrz skrzyni znajdujesz 5 skór oraz 10 klejnotów\n");
                     b.skora = b.skora + 5;
                     b.klejnot = b.klejnot + 10;
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 4)
                 {
                     Console.WriteLine("Przy polanie na skraju lasu, dzieci wypasają owce. Owce skubią trawę, dzieci w coś się bawią. Wtem zwierzęta się rozbiegają, a dzieci zaczynają krzyczeć. Okazuje się, że owce zaatakował Jaroszek. Rozpoczyna się walka!");
                     Przeciwnik Jaroszek = new Przeciwnik("Jaroszek", 3, 2, 2, 10, 15);
                     Walka.Pojedynek(b, Jaroszek);
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
 
             }
@@ -171,8 +180,9 @@ namespace ConsoleApp1
                                 continue;
                         }
                     }
-                    licznikPrzygod++;
                     wybor = "";
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 6)
                 {
@@ -185,17 +195,18 @@ namespace ConsoleApp1
                         switch (wybor)
                         {
                             case "1":
-                                if (b.sila > 12)
+                                if (b.sila > 5)
                                 {
                                     Console.WriteLine("Podchodzisz do wozu, nie zwracając uwagi na to, co mówi chłop. Zapierasz się nogami o ziemię i starasz się wypchać wóz. Po chwili udaje Ci się to zrobić. 'No, jak że ja bym miał takiego syna to bym miał, to bym złoty dwór miał już tu na Ziemii.'");
-                                    Console.WriteLine("W podziękowaniu chłop daje Ci parę skór i bierwono.\n");
+                                    Console.WriteLine("W podziękowaniu chłop daje Ci 10 skór, bierwono oraz otrzymujesz 10 punktow doświadczenia.\n");
                                     b.bierwiono++;
                                     b.skora = b.skora + 10;
+                                    b.PD = b.PD + 10;
                                 }
                                 else
                                 {
                                     Console.WriteLine("'No, to ja poganiam wołu i pchamy razem'. Chłop strzelił z bicza i zaczęliście pchać wóz. Po dłuższej chwili i kilku upadkach w końcu udało się wypchać wóz. 'Nooo, niech Ci się darzy! Niech bogi mają Cię w swojej opiece.'");
-                                    Console.WriteLine("Za pomoc w pchaniu wozu otrzymujesz bierwiono oraz punkty doświadczenia.\n");//Bohater.klejnot = Bohater.klejnot + 1;
+                                    Console.WriteLine("Za pomoc w pchaniu wozu otrzymujesz bierwiono oraz  10 punktów doświadczenia.\n");
                                     b.PD = b.PD + 10;
                                     b.bierwiono++;
                                 }
@@ -208,29 +219,33 @@ namespace ConsoleApp1
                                 continue;
                         }
                     }
-                    licznikPrzygod++;
                     wybor = "";
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 7)
                 {
                     Console.WriteLine("Zapadła noc. Przechadzając się nad jeziorem słyszysz piękny śpiew i muzykę graną na gęślach. Zaciekawiony tym, zbliżasz się do zarośli. Wtem Twoim oczom ukazuje się Wiła. Natychmiastowo pochylasz głowę, byleby nie spojżeć jej w oczy i zaczynasz walkę!");
                     Przeciwnik Wiła = new Przeciwnik("Wiła", 3, 4, 5, 15, 20);
                     Walka.Pojedynek(b, Wiła);
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 8)
                 {
                     Console.WriteLine("W poszukiwaniu dalszych przygód udałeś się do małej wioski pod lasem. Jednak zdaje się, że nikogo w niej nie ma. Wtem z jednej z chat wychodzi kobieta i mówi 'Uciekaj jeśli Ci życie miłe! Zostaliśmy zaatakowani przez Licho i wszyscy zachorowaliśmy'. Postanawiasz rozprawić się z potworem.");
                     Przeciwnik Licho = new Przeciwnik("Licho", 4, 2, 5, 20, 15);
                     Walka.Pojedynek(b, Licho);
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 9)
                 {
                     Console.WriteLine("W poszukiwaniu ziół udajesz się na bagna. Miejscowi chłopi ostrzegają Cię jednak, że na bagnach spotkać można okropnego stwora, lecz jeśli go pokonasz i przyniesiesz jego śluz, dostaniesz sporo pieniędzy od miejscowej zielarki. Będąc już blisko moczar, zauważasz bulgocącą wodę, z której zaczyna coś wypełzać. Czas na walkę. ");
                     Przeciwnik Bagiennik = new Przeciwnik("Bagiennik", 3, 2, 7, 30, 10);
                     Walka.Pojedynek(b, Bagiennik);
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
             }
             if (licznikPrzygod >= 6 && licznikPrzygod<9)
@@ -248,7 +263,7 @@ namespace ConsoleApp1
                             case "1"://Sielawowy Król
                                 Console.WriteLine("'O dobrze, dobrze żeś tu przylazł. Słyszał Ty kiedy opowieść o Sielawowym Królu? Nie? No to siadaj, siadaj, już Ci opowiadam!'");
                                 Console.WriteLine("Wiele lat temu, w naszej wiosce mieszkał rybak z dziećmi - synem Mikołajkiem i najpiękniejszą w okolicy córką Złotką. Któregoś dnia rybacy zauważyli, że wszyskie ryby, które łowią są martwe. Rybacy myśleli, że to sprawka złej siły - Króla Sielaw - będącego wielką rybą. Ojciec Mikołajka wyjaśnił mu, że zdarza się to raz na sto lat, bowiem Król jest żądny ofiary w postaci najpiękniejszej dziewczyny w wiosce. Mikołajek chcąc uratować swoją siostrę wpadł na pomysł aby ją ocalić. Przebrał się w dziewczęce szaty, po czym przywołał Króla Sielaw. Obiecał mu koronę, jeśli tylko wypłynie na brzeg. Gdy ryba wypłynęła, rybacy ją przechwycili i uwięzli. Dzięki temu już żadna dziewczyna nie musiała już być poświęcana. ");
-                                Console.WriteLine("Za wysłuchanie opowieści otrzymujesz punkty doświadczenia\n");
+                                Console.WriteLine("Za wysłuchanie opowieści otrzymujesz 10 punktów doświadczenia\n");
                                 b.PD = b.PD + 10;
                                 break;
                             case "2":
@@ -259,17 +274,19 @@ namespace ConsoleApp1
                                 continue;
                         }
                     }
-                    licznikPrzygod++;
                     wybor = "";
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 11)
                 {
                     Console.WriteLine("Wieczorem odwiedzasz Kmiecia z nadzieją, że pomoże Ci w znalezieniu roboty. Kmieć przyjmuje Cię z gościnnością. Gdy nastała północ, na zewnątrz słychać jakieś odgłosy. Wybiegacie z chaty i okazuje się, że spod płotu coś wychodzi. To Poroniec! 'Miał jako dobry duch strzec domostwa' mówi zapłakany Kmieć. Rozpoczyna się walka");
                     Przeciwnik Poroniec = new Przeciwnik("Poroniec", 8, 5, 5, 30, 35);
                     Walka.Pojedynek(b, Poroniec);
-                    Console.WriteLine("'Do tej pory nic się nie działo. Widocznie pełnia księżyca tak na niego zadziałała.' mówi już spokojny Kmieć. W podziękowaniu za Twoją pomoc otrzymujesz kilka skór.\n");
+                    Console.WriteLine("'Do tej pory nic się nie działo. Widocznie pełnia księżyca tak na niego zadziałała.' mówi już spokojny Kmieć. W podziękowaniu za Twoją pomoc otrzymujesz 10 skór.\n");
                     b.skora = b.skora + 10;
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 12)
                 {
@@ -277,19 +294,21 @@ namespace ConsoleApp1
                     Przeciwnik Utopiec = new Przeciwnik("Utopiec", 7, 8, 5, 35, 30);
                     Walka.Pojedynek(b, Utopiec);
                     Console.WriteLine("Gdy w końcu udało Ci się pokonać Utopca, zabierasz się za otwieranie skrzyni. Skrzynia okazała się być pusta.");
-                    Console.WriteLine("Otrzymujesz punkty doświadczenia.\n");
+                    Console.WriteLine("Otrzymujesz 15 punktów doświadczenia.\n");
                     b.PD = b.PD + 15;
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 13)
                 {
                     Console.WriteLine("W wiosce niedawno odbyła się egzekucja. Rzezimieszka, z obawy że mogą nim rządzić siły nieczyste, pochowano za wioską. Jednakże on powrócił pod postacią Strzygonia. I postanowił się zemścić. Niestety pierwszą napotkaną osobą jesteś Ty. Rozpoczyna się walka!");
                     Przeciwnik Strzyga = new Przeciwnik("Strzygoń", 5, 5, 8, 30, 35);
                     Walka.Pojedynek(b, Strzyga);
-                    Console.WriteLine("Z truchła Strzygonia wypada kilka klejnotów i rud.\n");
+                    Console.WriteLine("Z truchła Strzygonia wypada 5 klejnotów i 10 rudy.\n");
                     b.klejnot = b.klejnot + 5;
                     b.ruda = b.ruda + 10;
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 if (wybierzPrzygode[los] == 14)
                 {
@@ -297,10 +316,12 @@ namespace ConsoleApp1
                     Przeciwnik Mamuna = new Przeciwnik("Mamuna", 8, 5, 5, 35, 30);
                     Walka.Pojedynek(b, Mamuna);
                     Console.WriteLine("Po pokonaniu potwora udaje Ci się uciec ze skarbem.\n");
+                    Console.WriteLine("Otrzymujesz 15 klejnotów, 10 rudy i 20 złota.");
                     b.klejnot = b.klejnot + 15;
                     b.ruda = b.ruda +10;
                     b.zloto = b.zloto + 20;
-                    licznikPrzygod++;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
 
             }
@@ -308,34 +329,50 @@ namespace ConsoleApp1
             {
                 if (b.drugieZakonczenie == 0)
                 {
-                    Console.WriteLine("bosik");
-                    /*
-                    Przeciwnik Bożątko = new Przeciwnik("Bożątko", 5, 5, 5, 5, 5);
-                    Walka.Pojedynek(b, Bożątko);
-                    */
-                    if (b.punktacja >=40)
+                    Console.WriteLine("Życie, które zacząłeś wieść po opuszczeniu swoich ziomków to jakaś katastrofa. Przed dotarciem do osady niemal zginąłeś. Po wyzdrowieniu nie jest lepiej.\n Prawie dzień w dzień walczysz o swoje życie. Możesz zapomnieć o wyprawie do lasu po grzyby. Każde wejście do głuszy kończy się atakiem kolejnej krwiożerczej bestii chcącej pozbawić cię życia. Udało ci się wzbogacić to prawda, ale co z tego jeżeli kolejny dzień, może okazać się twoim ostatnim.\n Sfrustrowany postanowiłeś udać się do pobliskiej gospody odreagować złą passę. Znajdując się w środku okazało się, że zdobyłeś niemałą sławę w okolicy. Ludzie chętnie do ciebie zagadywali, a co niektórzy postawili nawet trunek. Po miło spędzonych paru godzinach postanowiłeś przespać się, jednak wszystkie miejsca w gospodzie były zajęte. Wyszedłeś na zewnątrz z nadzieją, że znajdziesz jakieś drzewo, pod którym się zdrzemniesz. Idąc ścieżką zauważyłeś niewyraźny kształt przed sobą. Na początku zrzuciłeś to na ilość wypitego alkoholu. Po paru krokach okazało się, że twoje oczy cię nie zawodzą, coś było przed tobą i zbliżało się w twoim kierunku. Wstrzymałeś oddech, sięgnałeś po swój miecz i uważnie przypatrzyłeś się obiektowi przed tobą. Wcześniejszy niewyraźny kształt okazał się upiorem... Nie siląc się nawet na dyskrecję zaryczałeś i barwnie zacząłeś przeklinać swój los. Twój ryk obudził ludzi w pobliskich domach, którzy wybiegli ze swoich chat z nienawiścią w oczach, jednak nim zdążyli zacząć przekrzykiwać się, zobaczyli nadciągającą zjawę. Każdy zamarł, a na tobie znowu ciązył obowiązek ratowania niewinnych ludzi przed groźnym potworem. Wyciągnąłeś swoje ostrze i ruszyłeś w kierunku bestii...");
+                    
+                    Przeciwnik Upior = new Przeciwnik("Upiór", 5, 5, 5, 5, 5);
+                    Walka.Pojedynek(b, Upior);
+                    Console.WriteLine();
+                    wskazowska = b.wyswietlPunktacje(b.punktacja);
+                    if (wskazowska == 1)
                     {
-                        Console.WriteLine("Następnym razem spróbuj odwiedzić tego kto cię uratował");
+                        Console.WriteLine("Następnym razem odwiedź tego, kto cię uratował.");
                     }
+                    Console.ReadKey();
+                    Console.Clear();
+                    
                 }
                 if (b.drugieZakonczenie == 1)
-                {
-                    Console.WriteLine("walka o córkę");
-                    Przeciwnik Gnieciuch = new Przeciwnik("Gnieciuch", 7, 6, 6, 40, 40);
-                    Walka.Pojedynek(b,Gnieciuch);
+                { 
+                    Console.WriteLine("Pamiętając problem, o którym wspomniał ci Mieszko postanawiasz odwdzięczyć się za jego dobroć, ratując Lesławę.\nCodziennie w nocy, gdy wszyscy już śpią, ty pilnujesz chaty miejscowej zielarki, wypatrując gnieciucha.\nPewnej nocy dopadło cię wreszcie zmęczenie i zasnąłeś.Na twoje nieszczęście w tym czasie gnieciuch postanowił spróbować pozbyć się ciebie.\n Poczułeś ogromny ciężar na swojej piersi.W momencie, gdy próbował chwycić twoje gardło na swoje szczęście otworzyłeś oczy... ");
+                    if (b.sila >= 20 && b.zrecznosc >= 10)
+                    {
+                        Console.WriteLine("Wykorzystując swoją nadludzką siłę bez problemu zrzuciłes małego demona na ziemię i chwyciłeś błyskawicznie swój miecz, który obok ciebie leżał.W tym momemencie było po walce. Nieporadny gruby stwór próbował pozbierać się z ziemi, ale cios twojego miecza nadszedł szybciej i zakończył jego żywot.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Mimo niskiego wzrostu jego waga cię przytłoczyła. Nie miałeś czasu zastanawiać się jak to możliwe, ze tak mała kreatura może tyle ważyć.\n Dzięki doświadczeniu, które nabyłeś po wszystkim co się spotkało od przybycia do osady, zachowałeś zimną krew.\n Odtrąciłeś zbliżające się ręce. Bestia wpadła w furię, że jej plan się nie powiódł. Spróbowała jeszcze raz, jednak ty tym razem wyprowadziłeś celny cios pięścią w głowę. Zamroczyło go to i dało okazję, żeby zrzucić niepozornego demona na ziemię.\nKrzątania na ziemi jednak cię osłabiła.Chwilę zajęło nim udało ci się sięgnąć po swój miecz.W tym czasie twój przeciwnik stanął na nogi i był gotów do walki...  ");
+                        Przeciwnik Gnieciuch = new Przeciwnik("Gnieciuch", 7, 6, 6, 40, 40);
+                        Walka.Pojedynek(b, Gnieciuch);
+                    }
+                    b.wyswietlPunktacje(b.punktacja);
+                    Console.ReadKey();
+                    Console.Clear();
                 }
-                licznikPrzygod++;
             }
             if(licznikPrzygod == 10)
             {
                 if (b.drugieZakonczenie == 0)
                 {
                     Console.WriteLine("epilog po prostu");
+                    b.wyswietlStat(b);
                     Environment.Exit(0);
                 }
                 if (b.drugieZakonczenie == 1)
                 {
                     Console.WriteLine("epilog z córką i wioską");
+                    b.wyswietlStat(b);
                     Environment.Exit(0);
                 }
             }
@@ -366,7 +403,7 @@ namespace ConsoleApp1
                 {
                     number = rand.Next(10, 15);
                 } while (wybierzPrzygode.Contains(number));
-                wybierzPrzygode.Add(number); 
+                wybierzPrzygode.Add(number);
             }
         }
     }

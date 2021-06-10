@@ -50,7 +50,7 @@ namespace ConsoleApp1
                 switch (wybor)
                 {
                     case "1":
-                        Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6},\nStatus bohatera: {7}\nPD: {8}", b.nazwa, b.sila, b.zrecznosc, b.wytrzymalosc, b.inteligencja, b.charyzma, b.PZ, b.bohaterStatus, b.PD);
+                        b.wyswietlStat(b);
                         break;
                     case "2":
                         b.Awans(b);
@@ -408,7 +408,7 @@ namespace ConsoleApp1
             }
             Console.Clear();
         }
-        public static void nazwijPostac(Bohater b)
+        public static string nazwijPostac()
         {
             Console.WriteLine("Nazwij swoją postać.");
             string wybierzImie = "";
@@ -417,14 +417,34 @@ namespace ConsoleApp1
                 wybierzImie = Console.ReadLine();
                 if ((Regex.IsMatch(wybierzImie, @"^[a-zA-Z]+$")) == true)
                 {
-                    b.nazwa = wybierzImie;
+                    Console.WriteLine("Poprawne imię");
                 }
                 else
                 {
                     Console.WriteLine("Niepoprawne znaki");
                 }
             }
-                    Console.WriteLine("Witaj {0}", b.nazwa);
+            Console.WriteLine("Witaj {0}", wybierzImie);
+            return wybierzImie;
+        }
+        public void wyswietlStat(Bohater b)
+        {
+            Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6},\nStatus bohatera: {7}\nPD: {8}", b.nazwa, b.sila, b.zrecznosc, b.wytrzymalosc, b.inteligencja, b.charyzma, b.PZ, b.bohaterStatus, b.PD);
+        }
+        public int wyswietlPunktacje(int punktacja)
+        { 
+        Console.WriteLine("Twoja ilośc punktów na zakończenie przygody: {0}", punktacja);
+        if ( punktacja >= 40)
+            {
+                return 1;
+            }
+        else
+            {
+                int roznica = 40 - punktacja;
+                Console.WriteLine("Zabrakło ci {0} punktów do odblokowania wskazówki", roznica);
+                return 0;
+            }
+        
         }
     }
 }

@@ -33,6 +33,7 @@ namespace ConsoleApp1
             Gildia.pokonaniPrzeciwnicy++;
             b.PD = b.PD + p.nagrodaP + (b.inteligencja / 2);
             b.zloto = b.zloto + p.nagrodaZ;
+            Console.WriteLine("Otrzymałeś: {0} punktów doświadczenia oraz {1} złota.", (p.nagrodaP + (b.inteligencja / 2)),p.nagrodaZ);
             p.PZ = p.maxPZ;
 
 

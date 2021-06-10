@@ -17,9 +17,10 @@ namespace ConsoleApp1
                 case "1":
                     Console.Clear();
                     Przygody.Zdarzenia(b);
-                    if (Przygody.los < 15)
+                    if (Przygody.los < 11)
                     {
                         Przygody.los++;
+                        Przygody.licznikPrzygod++;
                     }
                     break;
                 case "2":

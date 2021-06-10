@@ -19,14 +19,20 @@ namespace ConsoleApp1
             Przedmiot helm = new Przedmiot("Helm", 0, 0, 0, 0, 0);
             Przedmiot pas = new Przedmiot("Pas", 0, 0, 0, 0, 0);
             Bohater bohater = new Bohater();
-            bohater.sila = 10;
-            bohater.zrecznosc = 10;
+            bohater.nazwa = Bohater.nazwijPostac();
+            bohater.sila = 20;
+            bohater.zrecznosc = 20;
             bohater.wytrzymalosc = 10;
             bohater.inteligencja = 10;
             bohater.charyzma = 10;
             bohater.PZ = 100;
             bohater.PD = 20;
-            Przygody.Poczatek(bohater);
+            bohater.zloto = 100;
+            bohater.ruda = 100;
+            bohater.skora = 100;
+            bohater.klejnot = 100;
+
+            Przygody.Poczatek();
             Console.WriteLine(bohater.nazwa);
             while (true)
             {
