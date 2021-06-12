@@ -194,7 +194,7 @@ namespace Gra
                                 b.klejnot = b.klejnot - 1;
                                 b.postepMiecz++;
                                 b.punktacja = b.punktacja + 10;
-                                Console.WriteLine("Wykułeś ulepszony !!!");
+                                Console.WriteLine("Wykułeś ulepszony miecz !!!");
                                 Console.WriteLine("Naciśnij przycisk, aby kontnyuować");
                                 Console.ReadKey();
                                 break;
@@ -231,7 +231,7 @@ namespace Gra
                         }
                         if (b.postepMiecz == 2)
                         {
-                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                            Console.WriteLine("Twój miecz jest już maksymalnie ulepszony.");
                         }
                         break;
                     case "2":
@@ -283,7 +283,7 @@ namespace Gra
                         }
                         if (b.postepZbroja == 2)
                         {
-                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                            Console.WriteLine("Twój miecz jest już maksymalnie ulepszony.");
                         }
                         break;
                     case "3":
@@ -339,7 +339,7 @@ namespace Gra
                         }
                         if (b.postepHelm == 2)
                         {
-                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                            Console.WriteLine("Twój miecz jest już maksymalnie ulepszony.");
                         }
                         break;
                     case "4":
@@ -395,7 +395,7 @@ namespace Gra
                         }
                         if (b.postepPas == 2)
                         {
-                            Console.WriteLine("Nie da się bardziej ulepszyć");
+                            Console.WriteLine("Twój miecz jest już maksymalnie ulepszony.");
                         }
                         break;
                     case "5":

@@ -160,16 +160,16 @@ namespace Gra
                         switch (wybor)
                         {
                             case "1":
-                                Console.WriteLine("Tu opis egzekucji");
+                                Console.WriteLine("Dla wielu to widowisko było szybkie i niewarte uwagi. Jednakże Ciebie bardzo zainteresowało. Zainteresowało Cię tak bardzo, że nie zauważyłeś kiedy...");
                                 if (b.zloto >= 10)
                                 {
                                     b.zloto = b.zloto - 10;
-                                    Console.WriteLine("\nOdchodząc z placu czujesz się odrobinę lżejszy. Aż za lżejszy! Okazało się, że gdy Ty oglądałeś egzekucję, to ktoś ukradł Ci część złota\n");
+                                    Console.WriteLine("ktoś ukradł Ci część złota\n");
                                 }
                                 else
                                 {
                                     b.zloto = 0;
-                                    Console.WriteLine("Ukradziono ci całe twoje złoto\n");
+                                    Console.WriteLine("ukradziono Ci całe twoje złoto\n");
                                 }
                                 break;
                             case "2":
@@ -260,7 +260,7 @@ namespace Gra
                         wybor = Console.ReadLine();
                         switch (wybor)
                         {
-                            case "1"://Sielawowy Król
+                            case "1":
                                 Console.WriteLine("'O dobrze, dobrze żeś tu przylazł. Słyszał Ty kiedy opowieść o Sielawowym Królu? Nie? No to siadaj, siadaj, już Ci opowiadam!'");
                                 Console.WriteLine("Wiele lat temu, w naszej wiosce mieszkał rybak z dziećmi - synem Mikołajkiem i najpiękniejszą w okolicy córką Złotką. Któregoś dnia rybacy zauważyli, że wszyskie ryby, które łowią są martwe. Rybacy myśleli, że to sprawka złej siły - Króla Sielaw - będącego wielką rybą. Ojciec Mikołajka wyjaśnił mu, że zdarza się to raz na sto lat, bowiem Król jest żądny ofiary w postaci najpiękniejszej dziewczyny w wiosce. Mikołajek chcąc uratować swoją siostrę wpadł na pomysł aby ją ocalić. Przebrał się w dziewczęce szaty, po czym przywołał Króla Sielaw. Obiecał mu koronę, jeśli tylko wypłynie na brzeg. Gdy ryba wypłynęła, rybacy ją przechwycili i uwięzli. Dzięki temu już żadna dziewczyna nie musiała już być poświęcana. ");
                                 Console.WriteLine("Za wysłuchanie opowieści otrzymujesz 10 punktów doświadczenia\n");
@@ -361,21 +361,21 @@ namespace Gra
                     Console.Clear();
                 }
             }
-            if(licznikPrzygod == 10)
+            if (licznikPrzygod == 10)
             {
                 if (b.drugieZakonczenie == 0)
                 {
-                    Console.WriteLine("epilog po prostu");
-                    b.wyswietlStat(b);
+                    Console.WriteLine("'Niech żyje! Niech żyje!' zaczęli krzyczeć ludzie stojący w progach domostw.\n'Pokonałeś upiora, który nas dręczył nocami!' mówili inni.\nPo chwili pojawił się knaź Mieszko, który wraz z grupą chłopów ciągnął ogromny kufer.\n 'Przysłużyłeś się naszej osadzie! Postanowiliśmy Cię za to wynagrodzić.'. W kufrze znajduje się spora ilość złota, klejnotów, rud, skór oraz kilka innych przedmiotów, które przydałyby Ci się do dalszej drogi.\n'Ten kufer należy do Ciebie. Możesz go wykorzystać, jeśli chciałbyś ruszyć w dalszą drogę.'\nDroga zabójcy potworów spodobała Ci się, więc faktycznie rozważałeś wyruszenie w dalszą drogę.\n'Jeśli chciałbyś kiedyś do nas wrócić, to wrota osady zawsze będą dla Ciebie otwarte'.\nDecydujesz się jednak na obranie drogi łowcy potworów. Zabierasz kufer ze sobą i odchodzisz ze słowami: 'Niech wam bogi darzą dobrzy ludzie!' \n KONIEC");
                     Environment.Exit(0);
                 }
                 if (b.drugieZakonczenie == 1)
                 {
-                    Console.WriteLine("epilog z córką i wioską");
+                    Console.WriteLine("Nawet nie zauważyłeś, kiedy zielarka wybiegła z chaty i popędziła po kmiecia. Dopiero po chwili zobaczyłeś go w progu, gdy patrzył to na Ciebie, to na leżące obok truchło gnieciucha.\n'Udało Ci się! Naprawdę Ci się udało uratować Lesławę!' powiedział Mieszko, po czym Cię uścisnął. \n'Taka rzecz nie może obejść się bez nagrody. Przyjdź w południe na rynek'.\n...\nNastało południe. Na placu na rynku stoi mnóstwo ludzi. 'To chyba knaź ich tu zwołał' myślisz sobie.\n Gdy próbujesz się dostać na środek, zauważasz że wszystkie szmery ucichły i nikt się nie odzywa. W końcu docierasz na środek do knazia Mieszka.\n'Z uwagi na Twoje liczne zasługi oraz uratowane mojej córki Lesławy, chciałbym Ci podziękować' zaczął mówić Mieszko.\n'Mój dar dla Ciebie nie wyrazi pełni wdzięczności jaką czuję do Ciebie, ale proszę przyjmij ode mnie rękę mojej córki oraz spory kawał pola, tu w tej osadzie!'.\nNiedowierzasz własnym uszom. Naprawdę Ty, człowiek, który przyszedł z nikąd, nieznany przez nikogo, stałeś się bohaterem dla Mieszkańców osady!\nDziękujesz knaziowi, zabierasz ze sobą Lesławę i zaczynacie wieść razem spokojne, wspólne życie. \nKONIEC");
                     b.wyswietlStat(b);
                     Environment.Exit(0);
                 }
             }
+            
         }
         public static void losujPrzygody()
         {
