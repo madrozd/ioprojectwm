@@ -5,6 +5,10 @@ using System.Text.RegularExpressions;
 
 namespace Gra
 {
+    /// <summary>
+    /// Klasa publiczna <c>Bohater</c>. Klasa ta dziedziczy z klasy Arkusz. W klasie istnieją metody<c>Bohater</c>, <c>wyswietlStatystyki</c>, <c>Awans</c>, <c>zarzadzajEkwipunkiem</c>, 
+    /// <c>wytwarzajEkwipunek</c>, <c>nazwijPostać</c>, <c>wyswietlStat</c>, <c>wyswietlPunktacje</c>.
+    /// </summary>
     public class Bohater : Arkusz
     {
         public int PD;
@@ -21,6 +25,9 @@ namespace Gra
         private  int postepHelm = 0;
         private  int postepPas = 0;
 
+        /// <summary>
+        /// Konstruktor <c>Bohater</c>, służący do utworzenia bohatera. 
+        /// </summary>
         public Bohater()
         {
             nazwa = "Bezimienny";
@@ -39,7 +46,10 @@ namespace Gra
             klejnot = 0;
             bohaterStatus = "Nieznany";
         }
-
+        /// <summary>
+        /// Metoda <c>wyswietlStatystyki</c> w której poprzez instrukcję <c>switch</c> można wywołać dwie inne metody opisane poniżej. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public void wyswietlStatystyki(Bohater b)
         {
             string wybor = "";
@@ -65,6 +75,11 @@ namespace Gra
             }
             Console.Clear();
         }
+        /// <summary>
+        /// Metoda <c>Awans</c> pozwalająca graczowi na zmianę statystyk postaci. W metodzie tej zostają utworzone zmienne, które przechowują wartości statystyk postaci przed ich zwiększaniem.
+        /// Gracz wybiera, którą cechę chce zwiększyć, po czym następuje jej zwiększenie. Jesli gracz zrezygnuje ze zwiększania statystyk zostają one przywrócone do poprzednich wartości. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public void Awans(Bohater b)
         {
             int silaPrzed = b.sila;
@@ -144,7 +159,15 @@ namespace Gra
                 Console.WriteLine("Nie jestes gotowy");
             }
         }
-
+        /// <summary>
+        /// Metoda <c>zarzadzajEkwipunkiem</c>, w której gracz poprzez instrukcję <c>switch</c> może wybrać czy chce wyświetlić zawartość ekwipunku, czy też wywołać opisaną poniżej 
+        /// metodę odpowiedzialną za wytwarzanie przedmiotów.
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
+        /// <param name="m">Parametr <c>m</c> jest odniesieniem do elementu <c>Miecz</c> z klasy <c>Bohater</c></param>
+        /// <param name="z">Parametr <c>z</c> jest odniesieniem do elementu <c>Zbroja</c> z klasy <c>Bohater</c></param>
+        /// <param name="h">Parametr <c>h</c> jest odniesieniem do elementu <c>Hełm</c> z klasy <c>Bohater</c></param>
+        /// <param name="p">Parametr <c>p</c> jest odniesieniem do elementu <c>Pas</c> z klasy <c>Bohater</c></param>
         public static void zarzadzajEkwipunkiem(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h, Przedmiot p)
         {
             string wyborEkwipunek = " ";
@@ -170,6 +193,16 @@ namespace Gra
             }
             Console.Clear();
         }
+        /// <summary>
+        /// Metoda<c>wytwarzajEkwipunek</c> dzięki której bohater poprzez zmniejszanie ilości przedmiotów w posiadanym ekwipunku może dokonać ulepszenia ekwipunku. 
+        /// Metoda sprawdza czy bohater posiada odpowienią ilość zasobów oraz na jakim poziomie ulepszenia znajduje się dany element wyposażenia.
+        /// Jeśli bohater posiada już ulepszone elementy wyposażenia bądź nie posiada odpowiedniej ilości zasobów, to wyświetlany jest komunikat o braku możliwości wykonania ulepszenia.
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
+        /// <param name="m">Parametr <c>m</c> jest odniesieniem do elementu <c>Miecz</c> z klasy <c>Bohater</c></param>
+        /// <param name="z">Parametr <c>z</c> jest odniesieniem do elementu <c>Zbroja</c> z klasy <c>Bohater</c></param>
+        /// <param name="h">Parametr <c>h</c> jest odniesieniem do elementu <c>Hełm</c> z klasy <c>Bohater</c></param>
+        /// <param name="p">Parametr <c>p</c> jest odniesieniem do elementu <c>Pas</c> z klasy <c>Bohater</c></param>
         public static void wytwarzajEkwipunek(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h , Przedmiot p)
         {
             string wyborTworz = " ";
@@ -408,6 +441,12 @@ namespace Gra
             }
             Console.Clear();
         }
+        /// <summary>
+        /// Metoda <c>nazwijPostać</c> odpowiedzialna za nazwanie bohatera na początku rozgrywki. Sprawdza ona czy imię wprowadzone przez gracza spełnia wymagania. 
+        /// Jeśli wymogi dotyczące imienia nie są spełnione, wyświetlany jest komunikat o niepoprawnych znakach. 
+        /// </summary>
+        /// <param name="imie">Parametr <c>imie</c> używany celem nazwania postaci gracza.</param>
+        /// <returns>W przypadku powodzenia metoda zwraca wartość <c>true</c>, w przypadku przeciwnym - <c>false</c>.</returns>
         public bool nazwijPostac(string imie)
         {
                 if ((Regex.IsMatch(imie, @"^[a-zA-Z]+$")) == true)
@@ -422,20 +461,31 @@ namespace Gra
                 return false;
                 }
         }
+        /// <summary>
+        /// Metoda <c>wyswietlStat</c>, której celem jest wyświetlenie obecnych statystyk posiadanych przez gracza.
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> jest odniesieniem do klasy <c>Bohater</c></param>
         public void wyswietlStat(Bohater b)
         {
             Console.WriteLine("Statystyki {0}\nSiła: {1}\nZręczność: {2}\nWytrzymałość: {3}\nInteligencja: {4}\nCharyzma: {5}\nPunkty Życia: {6},\nStatus bohatera: {7}\nPD: {8}", b.nazwa, b.sila, b.zrecznosc, b.wytrzymalosc, b.inteligencja, b.charyzma, b.PZ, b.bohaterStatus, b.PD);
         }
-        public int wyswietlPunktacje(int punktacja)
+        /// <summary>
+        /// Metoda <c>wyswietlPunktacje</c>, wywoływana jest na końcu rozgrywki. Pokazuje ona ile punktów osiągnał gracz na koniec gry. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
+        /// <param name="punktacja">Parametr <c>punktacja</c> zawiera ilośc punktów, które osiągnął gracz.</param>
+        /// <returns>Jeśli punktacja jest większa od 40 do innej metody przekazywana jest wartość <c>true</c>, która odblokowuje sekretne zakończenie. 
+        /// W przeciwnym wypadku przekazywane jest <c>false</c>.</returns>
+        public bool wyswietlPunktacje(int punktacja)
         { 
         Console.WriteLine("Twoja ilośc punktów na zakończenie przygody: {0}", punktacja);
         if ( punktacja >= 40)
             {
-                return 1;
+                return true;
             }
         else
             {
-                return 0;
+                return false;
             }
         
         }

@@ -6,12 +6,20 @@ using System.Threading;
 
 namespace Gra
 {
+    /// <summary>
+    /// Klasa <c>Przygody</c> w której zapisana jest metoda ze zdarzeniami, które czekają na gracza. 
+    /// Jest w niej również metoda ze wstępem do świata gry oraz metoda odpowiedzialna za losowanie przygód. 
+    /// </summary>
     class Przygody
     {
         public static int licznikPrzygod = 0;
         public static List<int> wybierzPrzygode = new List<int>();
-        private static int wskazowska = 0;
+        private static bool wskazowska = false;
         public static int los = 0;
+        /// <summary>
+        /// Metoda <c>Początek</c> w której za pomocą instrukcji <c>switch</c> gracz może zdecydować czy chce ominąć prolog do przygody. 
+        /// Po przeczytaniu bądź pominięciu prologu wywoływana jest metoda odpowiedzialna za wybór gildii.
+        /// </summary>
         public static void Poczatek()
         {
             Console.WriteLine("Pominąć prolog?\n1.Nie\n2.Tak");
@@ -38,6 +46,13 @@ namespace Gra
             }
             Gildia.wyborGildii();
         }
+        /// <summary>
+        /// Metoda <c>Zdarzenia</c> zawierająca zaplanowane dla gracza zdarzenia podczas rozgrywki. Wybór zdarzeń odbywa się przy użyciu opisanej niżej metody <c>losujPrzygody</c>.
+        /// W zależnosci od wartości zmiennej <c>licznikPrzygod</c> wywoływane są zdarzenia z innego etapu rozgrywki. Gdy <c>licznikPrzygod</c> wskaże 9 wywoływana jest walka z tzw. Bossem - najtrudniejszym przeciwnikiem w rozgrywce. Natomiast gdy <c>licznikPrzygod</c> wskaże wartość 10 graczowi ukazuje się zakończenie. 
+        /// W grze zaplanowano sekretną walkę z Bossem oraz sekretne zakończenie. Jeśli gracz podczas rozgrywki znajdzie sekret zostaje ono wywołane zamiast standardowego. 
+        /// W standardowym zakończeniu jeśli gracz osiągnie mniej niż 40 punktów na zakończenie przygody wyświetlany jest mu komunikat o istniejącym sekrecie, którego nie odblokował. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void Zdarzenia(Bohater b)
         {
            string wybor = "";
@@ -335,7 +350,7 @@ namespace Gra
                     Walka.Pojedynek(b, Upior);
                     Console.WriteLine();
                     wskazowska = b.wyswietlPunktacje(b.punktacja);
-                    if (wskazowska == 1)
+                    if (wskazowska == true)
                     {
                         Console.WriteLine("Następnym razem odwiedź tego, kto cię uratował.");
                     }
@@ -366,6 +381,7 @@ namespace Gra
                 if (b.drugieZakonczenie == 0)
                 {
                     Console.WriteLine("'Niech żyje! Niech żyje!' zaczęli krzyczeć ludzie stojący w progach domostw.\n'Pokonałeś upiora, który nas dręczył nocami!' mówili inni.\nPo chwili pojawił się knaź Mieszko, który wraz z grupą chłopów ciągnął ogromny kufer.\n 'Przysłużyłeś się naszej osadzie! Postanowiliśmy Cię za to wynagrodzić.'. W kufrze znajduje się spora ilość złota, klejnotów, rud, skór oraz kilka innych przedmiotów, które przydałyby Ci się do dalszej drogi.\n'Ten kufer należy do Ciebie. Możesz go wykorzystać, jeśli chciałbyś ruszyć w dalszą drogę.'\nDroga zabójcy potworów spodobała Ci się, więc faktycznie rozważałeś wyruszenie w dalszą drogę.\n'Jeśli chciałbyś kiedyś do nas wrócić, to wrota osady zawsze będą dla Ciebie otwarte'.\nDecydujesz się jednak na obranie drogi łowcy potworów. Zabierasz kufer ze sobą i odchodzisz ze słowami: 'Niech wam bogi darzą dobrzy ludzie!' \n KONIEC");
+                    b.wyswietlStat(b);
                     Environment.Exit(0);
                 }
                 if (b.drugieZakonczenie == 1)
@@ -377,6 +393,10 @@ namespace Gra
             }
             
         }
+        /// <summary>
+        /// Metoda <c>losujPrzygody</c> wykorzystująca losowanie liczb celem wybrania przygód dla gracza. 
+        /// Dla kolejnych etapów rozgrywki przygotowane są odpowienie pętle. 
+        /// </summary>
         public static void losujPrzygody()
         {
             Random rand = new Random();

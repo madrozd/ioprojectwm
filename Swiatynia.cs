@@ -4,9 +4,18 @@ using System.Text;
 
 namespace Gra
 {
-   public class Swiatynia
+   /// <summary>
+   /// Klasa publiczna <c>Swiatynia</c> w której, bohater należący do gildii mnichów może złożyć ofiarę bądź się pomodlić celem zwiększenia parametru <c>uznanieBostwo</c>.
+   /// </summary>
+    public class Swiatynia
     {
         private static int modlitwaIlosc = 0;
+        /// <summary>
+        /// Metoda <c>Swiatynia</c>, która na początku sprawdza czy bohater należy do gildii Mnichów. 
+        /// Jesli należy, za pomocą instrukcji <c>switch</c> gracz wybiera czy chce się modlić - wywołując przy tym opisaną niżej metodę <c>Modlitwa</c> - czy też złożyć ofiarę z użyciem metody <c>Ofiara</c>.
+        /// Jesli nie należy wywoływany jest komunikat informujący, że bohater nie ma czego tam szukać. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> jest odniesieniem do klasy <c>Bohater</c>.</param>
         public static void wyborSwiatynia(Bohater b)
         {
             if (Gildia.gildia == "3")
@@ -41,6 +50,11 @@ namespace Gra
             }
 
         }
+        /// <summary>
+        /// Metoda <c>Modlitwa</c>, która jest dostępna jeśli gracz wybierze modlitwę w świątyni. Każde podejście do modlitwy powoduje inkrementację zmiennej <c>modlitwaIlosc</c>, która jest licznikiem modlitw. 
+        /// Jeśli <c>modlitwaIlosc</c> jest mniejsza od 5 następuje losowanie rezultatu modlitwy. W przeciwnym wypadku zostaje wyświetlony komunikat o przekroczonej ilości modlitw. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void Modlitwa(Bohater b)
         {
             Console.WriteLine("Postanowiłeś się pomodlić");
@@ -91,6 +105,12 @@ namespace Gra
                 Console.WriteLine("Wyczerpałeś swoją liczbę modlitw");
             }
         }
+        /// <summary>
+        /// Metoda <c>Ofiara</c>, dzięki której gracz może złożyć ofiarę na rzecz bóstwa. Sprawdzane jest czy bohater posiada odpowiednią ilość złota. 
+        /// Jeśli posiada, potrzebna ilość jest odejmowana od zasobów gracza, a licznik modlitw zostaje wyzerowany.
+        /// Jeśli nie posiada wyświetla się komunikat o braku odpowiedniej ilości złota. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void Ofiara(Bohater b)
         {
             Console.WriteLine("Zdecydowałeś się złożyć ofiarę");

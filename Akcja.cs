@@ -4,9 +4,21 @@ using System.Text;
 
 namespace Gra
 {
+    ///<summary>
+    ///Klasa publiczna <c>Akcja</c>, w której znajdują się metody odpowiedzialne za menu wyboru, odpoczynek oraz wyświetlenie punktacji. 
+    ///</summary>
    public class Akcja
     {
         private static int odwiedzinyMieszko = 0;
+        /// <summary>
+        /// Metoda <c>Menu</c>. Służy do wybierania kolejnych opcji rozgrywki. Wybór opcji odbywa się poprzez wpisanie wartości zmiennej "wybórAkcji", 
+        /// po czym następuje wywołanie odpowiedniej metody. W metodzie tej występuje kilka parametrów. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
+        /// <param name="m">Parametr <c>m</c> jest odniesieniem do elementu <c>Miecz</c> z klasy <c>Bohater</c></param>
+        /// <param name="z">Parametr <c>z</c> jest odniesieniem do elementu <c>Zbroja</c> z klasy <c>Bohater</c></param>
+        /// <param name="h">Parametr <c>h</c> jest odniesieniem do elementu "Hełm" z klasy <c>Bohater</c></param>
+        /// <param name="p">Parametr <c>p</c> jest odniesieniem do elementu "Pas" z klasy <c>Bohater</c></param>
         public static void Menu(Bohater b, Przedmiot m, Przedmiot z, Przedmiot h, Przedmiot p)
         {
             Console.WriteLine("1.Dalej\n2.Wyświetl statystyki\n3.Odpocznij\n4.Handel\n5.Gildia kupców\n6.Gildia Wojowników\n7.Zakon mnichów\n8.Świątynia\n9.Zarządzaj ekwipunkiem\n10.Wyświetl punktację");
@@ -78,6 +90,10 @@ namespace Gra
                     break;
             }
         }
+        /// <summary>
+        /// Metoda <c>Odpocznij</c>, powoduje zmianę wartości zmiennej "bierwiono" czego rezultatem jest zmiana wartości zmiennej "PZ". 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void Odpocznij(Bohater b)
         {
             
@@ -93,6 +109,10 @@ namespace Gra
                 Console.WriteLine("Nie masz bierwiona");
             }
         }
+        /// <summary>
+        /// Metoda <c>wyswietlPunktację</c>, mająca na celu wyświetlenie ilości punktów osiągniętych przez gracza. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void wyswietlPunktacje(Bohater b)
         {
             Console.WriteLine("Twoja punktacja: {0}",b.punktacja);

@@ -4,8 +4,15 @@ using System.Text;
 
 namespace Gra
 {
+    /// <summary>
+    /// Klasa <c>Handel</c> odpowiedzialna za metody umożliwiające graczowi kupno oraz sprzedaż przedmiotów z ekwipunku.
+    /// </summary>
     class Handel
     {
+        /// <summary>
+        /// Metoda <c>wyborHandel</c>, która z użyciem instrukcji <c>switch</c> wywołuje opisane niżej metody odpowiedzialne za kupno i sprzedaż przedmiotów.
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void wyborHandel(Bohater b)
         {
             string wyborOpcja = "";
@@ -32,6 +39,15 @@ namespace Gra
             }
 
 }
+        /// <summary>
+        /// Metoda <c>Sprzedaj</c> dzięki której bohater może zmniejszyć ilość posiadanych w ekwipunku przedmiotów. W momencie, gdy gracz zdecyduje się sprzedać przedmioty, 
+        /// metoda sprawdza czy gracz posiada ilość pozwalającą na dokończenie transakcji.
+        /// Jeśli posiada, to zwiększana jest wartość parametru <c>zloto</c> adekwatnie do iloczynu ilości przedmiotów, które gracz chce sprzedać i wartości pojedynczej sztuki. 
+        /// Pomniejszana jest ilość danego przedmiotu odpowiednio do ilości wybranej przez gracza. Zmianie ulega również parametr <c>zarobioneZloto</c> - 
+        /// do jego wartości dodawana jest ilość zarobionych na operacji pieniędzy.
+        /// Jeśli nie posiada wyświetlany jest komunikat informujący, że nie można sprzedać.
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void Sprzedaj(Bohater b)
         {
 
@@ -191,6 +207,12 @@ namespace Gra
             Console.Clear();
 
         }
+        /// <summary>
+        /// Metoda <c>Kup</c> odpowiedzialna za kupno przedmiotu. Gracz wybiera co chce kupić, następnie wpisuje interesującą go ilość. Metoda sprawdza czy gracz posiada odpowiednią ilość złota 
+        /// potrzebną do zakupu. Jeśli gracz akceptuje ofertę zakupu, zwiększeniu ulega ilość towaru w ekwipunku,zmniejszona zostaje natomiast ilość posiadanego złota odpowiednio 
+        /// do iloczynu ilości przedmiotów, które gracz chce kupić i wartości pojedynczej sztuki. Jeśli gracz nie akceptuje oferty wyświetla się komunikat o tym, że gracz zrezygnował z zakupu. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
         public static void Kup(Bohater b)
         {
 

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Gra
 {
+    /// <summary>
+    /// Klasa <c>Arkusz</c> jest klasą bazową dla klas: <c>Bohater</c>, <c>Przeciwnik</c>, <c>Przedmiot</c>.
+    /// </summary>
     public class Arkusz
     {
         public string nazwa;

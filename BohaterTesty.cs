@@ -15,8 +15,8 @@ namespace GraTesty
         public void wyswietlPunktacje_Powyzej40()
         {
             // arrange
-            int oczekiwane = 1;
-            int sprawdz;
+            bool oczekiwane = true;
+            bool sprawdz;
             var bohater = new Bohater();
             bohater.punktacja = 80;
 
@@ -31,8 +31,7 @@ namespace GraTesty
         public void wyswietlPunktacje_Rowne40()
         {
             // arrange
-            int oczekiwane = 1;
-            int sprawdz;
+            bool sprawdz;
             var bohater = new Bohater();
             bohater.punktacja = 40;
 
@@ -40,15 +39,14 @@ namespace GraTesty
             sprawdz = bohater.wyswietlPunktacje(bohater.punktacja);
 
             // assert
-            Assert.AreEqual(oczekiwane, sprawdz);
+            Assert.IsTrue(sprawdz);
         }
 
         [TestMethod]
         public void wyswietlPunktacje_Mniej40()
         {
             // arrange
-            int oczekiwane = 0;
-            int sprawdz;
+            bool sprawdz;
             var bohater = new Bohater();
             bohater.punktacja = 30;
 
@@ -56,7 +54,7 @@ namespace GraTesty
            sprawdz = bohater.wyswietlPunktacje(bohater.punktacja);
 
             // assert
-            Assert.AreEqual(oczekiwane, sprawdz);
+            Assert.IsFalse(sprawdz);
         }
         [TestMethod]
         public void nazwijPostac_Poprawnie()

@@ -4,8 +4,20 @@ using System.Text;
 
 namespace Gra
 {
+    /// <summary>
+    /// Klasa publiczna <c>Walka</c> odpowiedzialna jest za walkę z przeciwnikami. Istnieją w niej metody odpowiedzialne za wywołanie pojedynku, za atakowanie oraz za obronę.  
+    /// </summary>
     class Walka
     {
+        /// <summary>
+        /// Metoda <c>Pojedynek</c> wywoływana, gdy gracz wylosuje walkę z przeciwnikiem podczas przygody. Gracz informowany jest o nazwie przeciwnika z którym będzie walczył. 
+        /// Wyświetlana jest też posiadana obecnie przez bohatera ilość punktów życia oraz statystyki bohatera. Z użyciem instrukcji <c>switch</c> gracz wybiera 
+        /// czy chce atakować - wywoływana jest metoda <c>Atak</c>, czy też się bronić - z uzyciem metody <c>Obrona</c>.
+        /// Wygrana gracza następuje po utracie wszystkich punktów życia przeciwnika. Bohater otrzymuje wtedy przewidzianą nagrodę za pokonanie przeciwnika. 
+        /// Następuje również inkrementacja parametru <c>pokonaniPrzeciwnicy</c> oraz zostają przywrócone punkty życia przeciwnika.
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy<c>Bohater</c>.</param>
+        /// <param name="p">Parametr <c>p</c> służy do przesłania do funkcji obiektu klasy <c>Przeciwnik</c>.</param>
         public static void Pojedynek(Bohater b, Przeciwnik p)
         {
 
@@ -38,6 +50,18 @@ namespace Gra
 
 
         }
+        /// <summary>
+        /// Metoda <c>Atak</c> wywoływana, jeśli w instrukcji <c>switch</c> metody <c>Pojedynek</c> gracz wybierze, że chce atakować. 
+        /// Na początku ataku zostają zainicjowane zmienne losowe <c>szansaTrafienia</c> i <c>krytSprawdź</c>, odpowiedzialne kolejno za obliczenie zmiennej zawierającej szansę na trafienie przeciwnika oraz czy zadane obrażenie jest tzw. obrażeniem krytycznym. 
+        /// Jeśli wartość <c>trafienieSprawdz</c> jest mniejsza od 3 zostaje wyświetlony komunikat o chybionym ciosie.
+        /// W przypadku gdy wartość <c>trafienieSprawdz<c> jest większa od 3, obliczana jest zmienna odpowiedzialna za szansę na obrażenie krytyczne - jest to suma połowy zręczności gracza i wartości wylosowanej w zmiennej <c>krytSprawdz</c>.
+        /// Jeśli <c>krytSprawdź</c> jest większa bądź równa 8, wartość <c>obrazenia</c> staje się siłą pomnożoną razy 3, a przeciwnikowi odejmowana jest taka ilość punktów życia jaką wskazuje <c>obrazenia</c>.
+        /// W przeciwnym przypadku  wartość <c>obrazenia</c> to iloczyn siły i 1, a przeciwnikowi odejmowana jest taka ilość punktów życia jaką wskazuje <c>obrazenia</c>.
+        /// Jeśli przeciwnik posiada jeszcze punkty życia może zaatakować przeciwnika. Atak w jego przypadku odbywa się podobnie do ataku gracza.
+        /// Jeśli bohater utraci punkty życia, wyświetlany jest komunikat o przegranej. 
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy <c>Bohater</c>.</param>
+        /// <param name="p">Parametr <c>p</c> służy do przesłania do funkcji obiektu klasy <c>Przeciwnik</c>.</param>
         public static void Atak( Bohater b, Przeciwnik p)
         {
             int obrazenia = 0;
@@ -122,6 +146,13 @@ namespace Gra
                 Environment.Exit(0);
             }
         }
+        /// <summary>
+        /// Metoda <c>Obrona</c> wywoływana jest jeśli w instrukcji <c>switch</c> metody <c>Pojedynek</c>, gracz wybierze obronę.
+        /// Na początku sprawdzone czy punkty życia bohatera są mniejsze od wartości <c>maxPZ</c> będącej maksymalną ilością punktów życia gracza. Jeśli są mniejsze, to punkty życia bohatera zostają odnowione.
+        /// Następnie następuje faza ataku przeciwnika wyglądająca tak samo, jak opisane jest w metodzie <c>Atak</c>.
+        /// </summary>
+        /// <param name="b">Parametr <c>b</c> służy do przesłania do funkcji obiektu klasy <c>Bohater</c>.</param>
+        /// <param name="p">Parametr <c>p</c> służy do przesłania do funkcji obiektu klasy <c>Przeciwnik</c>.</param>
         public static void Obrona(Bohater b, Przeciwnik p)
         {
             int maxPZ = b.wytrzymalosc * 10;

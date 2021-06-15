@@ -5,7 +5,10 @@ using System.Text.RegularExpressions;
 namespace Gra
 {
 
-
+    /// <summary>
+    /// Klasa <c>Program</c> jest główną klasą programu. Wywoływane są w niej metody, które są odpowiedzialne za losowanie przygód, nazwanie postaci, rozpoczęcie przygody oraz menu. 
+    /// Zostają również wywołane konstruktory klas <c>Bohater</c> i <c>Przedmiot</c>, tworząc przy tym obiekty tych klas. Do zmiennych obiektu <c>Bohater</c> zostają przypisane odpowiednie wartości. 
+    /// </summary>
     class Program
     {
 
