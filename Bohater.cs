@@ -37,7 +37,7 @@ namespace Gra
             wytrzymalosc = 1;
             inteligencja = 1;
             charyzma = 1;
-            PD = 0;
+            PD = 10;
             bierwiono = 1;
             zloto = 0;
             punktacja = 0;
